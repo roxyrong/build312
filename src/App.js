@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import bg from './assets/background.jpg';
-import logo from './assets/white_logo.png';
+import white_logo from './assets/white_logo.png';
+import black_logo from './assets/black_logo.jpg';
 import * as styles from "./styles";
+
+var ReactFitText = require('react-fittext');
 
 class App extends Component {
   render() {
@@ -10,7 +13,7 @@ class App extends Component {
         <div className="container">
           <nav className="navbar fixed-top navbar-light navbar-expand-md navbar-burger">
             <div className="container-fluid">
-              <a className="navbar-brand" href="/"><img src={logo} style={styles.logoStyle} alt="logo" /></a>
+              <a className="navbar-brand" href="/"><img src={white_logo} style={styles.whiteLogo} alt="white-logo" /></a>
               <button className="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                 <span className="navbar-toggler-icon"></span>
               </button>
@@ -26,7 +29,34 @@ class App extends Component {
           </nav>
         </div>
         <img src={bg} style={styles.backgroundPic} alt="background-pic" />
-        
+        <div className="container">
+          <ReactFitText compressor={1.5}>
+            <h1 style={styles.landingPageTitle}>BUILD312</h1>
+          </ReactFitText>
+          <ReactFitText compressor={3}>
+            <p style={styles.tagline}>Build · Connect · Grow</p>
+          </ReactFitText>
+        </div>
+        <div className="container" style={styles.aboutUs}>
+          <div className="row">
+            <div className="col-md-6">
+              <h3> About Us</h3>       
+              <div>
+                “312” is the telephone area code for downtown Chicago. Founded in 2017, Build312 is a Chicago-based community that aims to bring together young entrepreneurs, interesting perspectives and innovative ideas. Through various online and offline activities and events, we exist to connect entrepreneurs with resources, investors, and each other. Join the movement to build yourself, build your ideas and build a better future.
+              </div>
+              <h3 style={styles.aboutUsHeader}>Our Mission</h3>
+              <ul>
+                <li>To provide accessible funding and advisory services to early stage startups</li>
+                <li>To build influential online media platform for learning and knowledge sharing</li>
+                <li>To create a close-knitted community for young Entrepreneurs in the Midwest</li>
+                <li>To connect the Midwest with the other global entrepreneurial communities</li>
+              </ul>
+            </div> 
+            <div className="col-md-6">
+              <img src={black_logo} style={styles.blackLogo }alt="black-logo" /> 
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
