@@ -5,6 +5,7 @@ import white_logo from './assets/white_logo.png';
 import black_logo from './assets/black_logo.jpg';
 import screenshot from './assets/intro_video_screenshot.png' 
 import intro_video from './assets/Build312_promo.mp4'
+import team_pic from './assets/team_pic.jpg'
 import { Player } from 'video-react';
 import "video-react/dist/video-react.css";
 
@@ -45,11 +46,11 @@ class App extends Component {
           <div className="row">
             <div className="col-md-6">
               <h3> About Us</h3>       
-              <div>
+              <div style={styles.aboutUsText}>
                 “312” is the telephone area code for downtown Chicago. Founded in 2017, Build312 is a Chicago-based community that aims to bring together young entrepreneurs, interesting perspectives and innovative ideas. Through various online and offline activities and events, we exist to connect entrepreneurs with resources, investors, and each other. Join the movement to build yourself, build your ideas and build a better future.
               </div>
               <h3 style={styles.aboutUsHeader}>Our Mission</h3>
-              <ul>
+              <ul style={styles.aboutUsText}>
                 <li>To provide accessible funding and advisory services to early stage startups</li>
                 <li>To build influential online media platform for learning and knowledge sharing</li>
                 <li>To create a close-knitted community for young Entrepreneurs in the Midwest</li>
@@ -88,7 +89,11 @@ class App extends Component {
             <p style={styles.eventContent}>CoGen Coworking</p>
             <button type="button" className="bt btn-lg btn-primary" style={styles.eventButton}>RSVP</button>
           </div>
-
+        </div>
+        <div className="container">
+          <h3 style={styles.teamHeader} >Team</h3>
+          <img src={team_pic} style={styles.teamPic} alt="team-pic"></img>
+          <p style={styles.teamText} >We are a group of people passionate about entrepreneurship and are committed to help create knowledge sharing and innovation in Chicago.</p>
         </div>
       </div>
     );

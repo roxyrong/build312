@@ -43,6 +43,10 @@ export const aboutUsHeader = {
     "marginTop": "50px",
 }
 
+export const aboutUsText = {
+    "fontWeight": "200"
+}
+
 export const blackLogo = {
     "width": "90%",
 }
@@ -122,4 +126,18 @@ export const eventButtonMiddle = {
     "color": "white",
     "backgroundColor": "black",
     "marginTop": "20px"
+}
+
+export const teamPic = {
+    "width": "100%",
+    "padding": "5% 20% 0 20%",
+}
+
+export const teamHeader = {
+    "marginTop": "100px",
+}
+
+export const teamText = {
+    "padding": "2% 20%", 
+    "fontWeight": "200"
 }
