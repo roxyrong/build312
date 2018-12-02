@@ -46,3 +46,80 @@ export const aboutUsHeader = {
 export const blackLogo = {
     "width": "90%",
 }
+
+export const introVideo = {
+    "marginTop": "100px",
+    "marginBottom": "100px"
+}
+
+export const eventLeft = {
+    "backgroundColor": "white",
+    "height": "600px",
+}
+
+export const eventMiddle = {
+    "backgroundColor": "black",
+    "height": "600px",
+}
+
+export const eventRight = {
+    "backgroundColor": "#B8ECD6",
+    "height": "600px",
+}
+
+export const eventTitle = {
+    "marginTop": "100px",
+}
+
+export const eventHeader = {
+    "color": "#1DCB8B",
+    "fontWeight": "bold",
+    "marginTop": "50px",
+    "paddingLeft": "30%",
+    "paddingRight": "30%",
+}
+
+export const eventContent = {
+    "marginTop": "10px",
+    "paddingLeft": "30%",
+    "paddingRight": "30%",
+}
+
+export const eventButton = {
+    "width": "40%",
+    "marginLeft": "30%",
+    "marginRight": "30%",
+    "backgroundColor": "#1DCB8B",
+    "borderColor": "#1DCB8B",
+    "marginTop": "50px"
+}
+
+export const eventLineBreak = {
+    "backgroundColor": "white",
+    "width": "50px",
+    "height": "10px",
+    "margin": "100px auto 0 auto"
+}
+
+export const eventMiddleText1 = {
+    "color": "#1DCB8B", 
+    "textAlign": "center",
+    "fontWeight": "bold",
+    "marginTop": "100px"
+}
+
+export const eventMiddleText2 = {
+    "color": "white",
+    "textAlign": "center",
+    "fontWeight": "bold",
+    "marginTop": "50px"
+}
+
+export const eventButtonMiddle = {
+    "width": "40%",
+    "marginLeft": "30%",
+    "marginRight": "30%",
+    "color": "white",
+    "backgroundColor": "black",
+    "marginTop": "20px"
+}
