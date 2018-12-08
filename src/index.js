@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import LandingPage from "./components/landing_page";
+import EventPage from './components/event_page';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -9,9 +10,10 @@ class App extends React.Component {
     render() {
         return (
           <div>
-            <switch>
+            <Switch>
               <Route exact path='/' component={LandingPage}/>
-            </switch>
+              <Route exact path='/event' component={EventPage}/>
+            </Switch>
           </div>
     
         );

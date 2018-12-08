@@ -1,5 +1,5 @@
 import React from "react";
-import * as styles from "../../styles";
+import * as styles from "../../styles/landing_styles";
 import team_pic from '../../assets/team_pic.jpg'
 
 class Team extends React.Component {

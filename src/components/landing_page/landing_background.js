@@ -1,5 +1,5 @@
 import React from "react";
-import * as styles from "../../styles";
+import * as styles from "../../styles/landing_styles";
 import bg from '../../assets/background.jpg';
 
 var ReactFitText = require('react-fittext');

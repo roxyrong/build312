@@ -1,6 +1,6 @@
 import React from "react";
-import * as styles from "../../styles/landing_styles";
-import white_logo from '../../assets/white_logo.png';
+import * as styles from "../styles/landing_styles";
+import white_logo from '../assets/white_logo.png';
 
 class NavBar extends React.Component{
     constructor(props) {

@@ -1,5 +1,5 @@
 import React from "react";
-import * as styles from "../../styles";
+import * as styles from "../../styles/landing_styles";
 import black_logo from '../../assets/black_logo.jpg';
 import screenshot from '../../assets/intro_video_screenshot.png' 
 import intro_video from '../../assets/Build312_promo.mp4'

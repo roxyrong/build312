@@ -1,5 +1,5 @@
 import React from "react";
-import * as styles from "../../styles";
+import * as styles from "../../styles/landing_styles";
 
 
 class Events extends React.Component {
