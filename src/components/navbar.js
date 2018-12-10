@@ -1,12 +1,11 @@
 import React from "react";
-import * as styles from "../styles/landing_styles";
+import * as styles from "../styles/nav_styles";
 import white_logo from '../assets/white_logo.png';
 
 class NavBar extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-          isTop: true,
           hover: {
               'Home':false, 
               'Events':false, 
@@ -18,20 +17,6 @@ class NavBar extends React.Component{
             }
 
         };
-        this.onScroll = this.onScroll.bind(this);
-    }
-
-    componentDidMount() {
-        document.addEventListener('scroll', () => {
-          const isTop = window.scrollY < 200;
-          if (isTop !== this.state.isTop) {
-            this.onScroll(isTop);
-          }
-        });
-    }
-
-    onScroll(isTop) {
-        this.setState({ isTop });
     }
 
     handleHover(idx) {
@@ -50,11 +35,10 @@ class NavBar extends React.Component{
     }
 
     render() {
-        var navStyle = (this.state.isTop) ? null : styles.navbarScroll;
         var navButton = this.getbuttonStyle();
         return (
             <div className="container">
-                <nav className="navbar fixed-top navbar-light navbar-expand-md navbar-burger" style={navStyle}> 
+                <nav className="navbar fixed-top navbar-light navbar-expand-md navbar-burger" style={styles.navbar}> 
                 <div className="container-fluid">
                     <a className="navbar-brand ml-5" href="/"><img src={white_logo} style={styles.whiteLogo} alt="white-logo" /></a>
                     <button className="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">

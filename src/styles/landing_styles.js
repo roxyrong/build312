@@ -1,7 +1,3 @@
-export const appStyle = {
-    fontFamily: "Helvetica",
-}
-
 export const backgroundPic = {
     width: "100%",
     filter: "brightness(60%)",
@@ -27,6 +23,7 @@ export const navButton = {
     marginRight: "20px",
     textAlign: "right"
 }
+
 export const navButtonHover = {
     color: "#1DCB8B",
     fontSize: "18px",

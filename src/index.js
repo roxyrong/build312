@@ -7,6 +7,19 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch('/users')
+      .then(res => console.log(res))
+      .then(users => this.setState({ users }));
+  }
+
     render() {
         return (
           <div>

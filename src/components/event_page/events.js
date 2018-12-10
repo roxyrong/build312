@@ -4,9 +4,19 @@ import * as styles from "../../styles/event_styles";
 class Events extends React.Component {
     render() {
         return (
-            <div className="container" style={styles.aboutUs}>
-                <h3>Upcoming Events</h3>
-                <h3>Past Events</h3>
+            <div className="container">
+                <h4 style={styles.upcomingEvent}>Upcoming Events</h4>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-6">
+                            <img href="" alt=""/>
+                        </div>
+                        <div className="col-md-6">
+                            <h4>How Am I Building This - Food</h4>
+                        </div>
+                    </div>
+                </div>
+                <h4>Past Events</h4>
             </div>
         );
 

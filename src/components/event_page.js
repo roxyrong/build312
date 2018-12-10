@@ -1,6 +1,7 @@
 import React from "react";
 import * as appStyles from "../styles/app_styles";
-import NavBar from "../components/navbar"
+import NavBar from "./navbar"
+import Events from "./event_page/events"
 
 
 class EventPage extends React.Component {
@@ -8,8 +9,7 @@ class EventPage extends React.Component {
         return (
             <div className="App" style={appStyles.appStyle}>
                 <NavBar />
-                <h3>Upcoming Events</h3>
-                <h3>Past Events</h3>
+                <Events />
             </div>
         );
     }
