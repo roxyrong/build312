@@ -3,6 +3,7 @@ import * as styles from "../../styles/event_styles";
 
 class Events extends React.Component {
     render() {
+        console.log(this.eventbriteData);
         return (
             <div className="container">
                 <h4 style={styles.upcomingEvent}>Upcoming Events</h4>
