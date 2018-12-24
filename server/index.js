@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const favicon = require('express-favicon');
 require('dotenv').config()
 
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
@@ -10,6 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '..', 'build/')));
+app.use(favicon(path.join(__dirname, '..', 'public/', 'favicon.png')));
 
 app.get('/event-data-url', (req, res) => {
   var url = 'https://www.eventbriteapi.com/v3/users/me/owned_events/?token=' + process.env.EVENTBRITE_OAUTH + '&expand=organizer'
