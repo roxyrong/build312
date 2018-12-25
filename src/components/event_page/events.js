@@ -32,13 +32,16 @@ class Events extends React.Component {
         if (this.state.eventbriteData != null) {
             let events = this.state.eventbriteData.events;
             events.reverse().map((event, i) => {
+                let n = event.start.local.indexOf("T");
+                let date = event.start.local.substring(0, n);
                 viewEvents.push( 
                     <div class="col-lg-4 col-md-6" style={styles.eventCard}>                   
                         <div class="card shadow-sm">
                             <img class="card-img-top" src={event.logo.url} alt="Card image cap"/>
                             <div class="card-body">
                                 <h5 class="card-title">{event.name.text}</h5>
-                                <p class="card-text"><small class="text-muted">{event.start.local}</small></p>
+                                <p class="card-text" style={styles.eventDate}><small class="text-muted">{date}</small></p>
+                                <button type="button" class="btn btn-sm btn-primary" style={styles.viewMoreBtn}>View More</button>
                             </div>
                         </div>
                     </div>

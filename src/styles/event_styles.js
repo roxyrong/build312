@@ -9,3 +9,18 @@ export const cardDeck = {
 export const eventCard = {
     marginBottom: "50px"
 }
+
+export const cardBody = {
+    height: "150px"
+}
+
+export const eventDate = {
+    display:"inline"
+}
+
+export const viewMoreBtn = {
+    display: "inline",
+    float: "right",
+    backgroundColor: "#1DCB8B",
+    borderColor: "#1DCB8B"
+}
