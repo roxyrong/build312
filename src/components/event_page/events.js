@@ -7,30 +7,29 @@ class Events extends React.Component {
         this.state = {
             eventbriteUrl: null,
             eventbriteData: null
-        }
-        this.eventbriteData = this.getEventbriteData.bind(this);
-        this.eventbriteData();
+        };
+        this.geteventbriteData = this.getEventbriteData.bind(this);
+        this.geteventbriteData();
     }
 
     getEventbriteData() {
         fetch('/event-data-url')
-        .then(results => {
-            return results.text();
-        }).then(data => {
-            this.setState({eventbriteUrl: data});
-        });
-
-        // TO-DO: add a promiser
-        fetch(this.state.eventbriteUrl)
-        .then(results => {
-            return results.text();
-        }).then(data => {
-            this.setState({eventbriteData: data});
-        })
+        .then(function(response) { 
+            return response.text()
+        }.bind(this))
+        .then(function(data) {
+            return fetch(data)
+        }.bind(this))
+        .then(function(response) { 
+            return response.text(); 
+        }.bind(this))
+        .then(function(data) {
+            this.setState({eventbriteData: data})
+        }.bind(this));        
     }
 
     render() {
-        console.log(this.state.eventbriteUrl);
+        console.log(this.state.eventbriteData);
         return (
             <div class="container" style={styles.pastEvents} >
                 <h3>Past Events</h3>
