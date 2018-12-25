@@ -1,7 +1,11 @@
 export const pastEvents = {
-    marginTop: "100px"
+    marginTop: "125px"
 }
 
 export const cardDeck = {
     marginTop: "50px"
+}
+
+export const eventCard = {
+    marginBottom: "50px"
 }
