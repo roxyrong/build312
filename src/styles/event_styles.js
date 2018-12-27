@@ -10,10 +10,6 @@ export const eventCard = {
     marginBottom: "50px"
 }
 
-export const cardBody = {
-    height: "150px"
-}
-
 export const eventDate = {
     display:"inline"
 }
