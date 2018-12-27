@@ -75,7 +75,7 @@ class NavBar extends React.Component{
                     </ul>
                     <ul className="navbar-nav pull-right">
                         <li className="nav-item"><a className="nav-link" onMouseEnter={()=>this.handleHover("Signup")} 
-                            onMouseLeave={()=>this.handleHover("Signup")} style={navButton["Signup"]} href="/">Signup</a></li>
+                            onMouseLeave={()=>this.handleHover("Signup")} style={navButton["Signup"]} href="/signup">Signup</a></li>
                         <li className="nav-item"><a className="nav-link" onMouseEnter={()=>this.handleHover("Login")} 
                             onMouseLeave={()=>this.handleHover("Login")} style={navButton["Login"]} href="/">Login</a></li>
                     </ul>
