@@ -36,7 +36,9 @@ models.sequelize.sync().then(function() {
 });
 
 // auth
-var authRoute = require('./app/routes/auth.js')(app);
+var authRoute = require('./app/routes/auth.js')(app, passport);
+
+require('./app/config/passport.js')(passport, models.user);
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));

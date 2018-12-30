@@ -30,14 +30,6 @@ module.exports = function(sequelize, Sequelize) {
             type: Sequelize.STRING,
             allowNull: false
         },
-
-        created: {
-            type: Sequelize.DATE
-        },
- 
-        last_login: {
-            type: Sequelize.DATE
-        },
  
         status: {
             type: Sequelize.ENUM('active', 'inactive'),

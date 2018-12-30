@@ -1,5 +1,30 @@
-module.exports = function(app) {
-    // app.get('/signup', function(req, res) {
-    //     res.render({Signup});
-    // });
+
+module.exports = function(app, passport) {
+    app.get('/logout', function(req, res) {
+        req.session.destroy(function(err) {
+            res.redirect('/');
+        });
+    });
+
+    app.get('/dashboard', isLoggedIn, function(req, res) {
+        res.send('<h1>Dashboard!</h1>');
+    });
+
+    app.post('/signup', passport.authenticate('local-signup', {
+        successRedirect: '/dashboard',
+        failureRedirect: '/signup'
+    }
+    ));
+
+    app.post('/login', passport.authenticate('local-signin', {
+        successRedirect: '/dashboard',
+        failureRedirect: '/login'
+    }
+    ));
+
+    function isLoggedIn(req, res, next) {
+        if (req.isAuthenticated())
+            return next();
+        res.redirect('/login');
+    }
 }
