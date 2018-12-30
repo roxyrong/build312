@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import LandingPage from "./components/landing_page";
 import EventPage from './components/event_page';
 import Signup from './components/signup';
-import Signin from './components/signin';
+import Login from './components/login';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -16,7 +16,7 @@ class App extends React.Component {
               <Route exact path='/' component={LandingPage}/>
               <Route exact path='/event' component={EventPage}/>
               <Route exact path='/signup' component={Signup}/>
-              <Route exact path='/signin' component={Signin}/>
+              <Route exact path='/login' component={Login}/>
             </Switch>
           </div>
     
