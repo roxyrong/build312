@@ -7,6 +7,7 @@ import Signup from './components/signup';
 import Login from './components/login';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import MembershipPage from './components/membership_page';
 
 class App extends React.Component {
     render() {
@@ -17,6 +18,7 @@ class App extends React.Component {
               <Route exact path='/event' component={EventPage}/>
               <Route exact path='/signup' component={Signup}/>
               <Route exact path='/login' component={Login}/>
+              <Route exact path='/membership' component={MembershipPage}/>
             </Switch>
           </div>
     
