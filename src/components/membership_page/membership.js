@@ -3,8 +3,6 @@ import * as styles from "../../styles/membership_styles"
 import bg from '../../assets/background.jpg';
 import MediaQuery from 'react-responsive';
 
-var ReactFitText = require('react-fittext');
-
 class Membership extends React.Component {
     render() {
         return (

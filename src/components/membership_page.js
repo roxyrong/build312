@@ -2,6 +2,7 @@ import React from "react";
 import * as appStyles from "../styles/app_styles";
 import NavBar from "../components/landing_page/navbar"
 import Membership from "./membership_page/membership"
+import Description from "./membership_page/description"
 
 
 class MembershipPage extends React.Component {
@@ -10,6 +11,7 @@ class MembershipPage extends React.Component {
             <div className="App" style={appStyles.appStyle}>
                 <NavBar />
                 <Membership />
+                <Description />
             </div>
         );
     }

@@ -7,8 +7,8 @@ export const backgroundPic = {
     filter: "brightness(60%)",
     zIndex: "-1",
     position: "absolute",
-    marginTop: "-625px",
-    minHeight: "650px",
+    marginTop: "-675px",
+    minHeight: "675px",
     maxHeight: "750px"
 }
 
@@ -68,6 +68,7 @@ export const taglineMobile = {
 
 export const pricingBtnDiv = {
     marginTop: "50px",
+    marginBottom: "50px",
     textAlign: "center",
 }
 
@@ -81,4 +82,53 @@ export const pricingBtn = {
     borderColor: "#1DCB8B",
     letterSpacing: "1px",
     boxShadow: "#1DCB8B"
+}
+
+export const leftPanel = {
+    backgroundColor: "#B8ECD6"
+}
+
+export const eventsImageA = {
+    width: "100%",
+    height: "550px",
+    resizeMode: 'contain'
+}
+
+export const eventsImageB = {
+    width: "100%",
+    height: "450px",
+    resizeMode: 'contain'
+}
+
+export const headingA = {
+    textAlign: "center",
+    marginTop: "50px",
+    marginBottom: "25px",
+    fontSize: "40px",
+    letterSpacing: "2px"
+}
+
+export const headingB = {
+    color: "#1DCB8B",
+    textAlign: "center",
+    marginTop: "50px",
+    marginBottom: "25px",
+    fontSize: "40px",
+    letterSpacing: "2px"
+}
+
+export const descriptionListA = {
+    fontSize: "20px",
+    letterSpacing: "1px",
+    marginLeft: "15%",
+    marginRight: "15%"
+}
+
+export const descriptionListB = {
+    color: "#1DCB8B",
+    fontSize: "20px",
+    letterSpacing: "1px",
+    marginLeft: "15%",
+    marginRight: "15%",
+    marginBottom: "50px"
 }
