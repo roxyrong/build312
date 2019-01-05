@@ -7,9 +7,9 @@ export const backgroundPic = {
     filter: "brightness(60%)",
     zIndex: "-1",
     position: "absolute",
-    marginTop: "-675px",
-    minHeight: "675px",
-    maxHeight: "750px"
+    marginTop: "-725px",
+    minHeight: "725px",
+    maxHeight: "775px"
 }
 
 export const backgroundPicMobile = {
@@ -17,8 +17,8 @@ export const backgroundPicMobile = {
     filter: "brightness(60%)",
     zIndex: "-1",
     position: "absolute",
-    marginTop: "-450px",
-    minHeight: "475px"
+    marginTop: "-500px",
+    minHeight: "525px"
 }
 
 export const pageTitle = {
@@ -68,7 +68,7 @@ export const taglineMobile = {
 
 export const pricingBtnDiv = {
     marginTop: "50px",
-    marginBottom: "50px",
+    marginBottom: "100px",
     textAlign: "center",
 }
 
@@ -90,21 +90,19 @@ export const leftPanel = {
 
 export const eventsImageA = {
     width: "100%",
-    height: "550px",
-    resizeMode: 'contain'
+    height: "100%"
 }
 
 export const eventsImageB = {
     width: "100%",
-    height: "450px",
-    resizeMode: 'contain'
+    height: "100%"
 }
 
 export const headingA = {
     textAlign: "center",
     marginTop: "50px",
     marginBottom: "25px",
-    fontSize: "40px",
+    fontSize: "4vw",
     letterSpacing: "2px"
 }
 
@@ -113,22 +111,29 @@ export const headingB = {
     textAlign: "center",
     marginTop: "50px",
     marginBottom: "25px",
-    fontSize: "40px",
+    fontSize: "4vw",
     letterSpacing: "2px"
 }
 
 export const descriptionListA = {
-    fontSize: "20px",
+    fontSize: "calc(12px + 0.6vw)",
     letterSpacing: "1px",
     marginLeft: "15%",
-    marginRight: "15%"
+    marginRight: "15%",
+    marginBottom: "75px"
 }
 
 export const descriptionListB = {
     color: "#1DCB8B",
-    fontSize: "20px",
+    fontSize: "calc(12px + 0.6vw)",
     letterSpacing: "1px",
     marginLeft: "15%",
     marginRight: "15%",
-    marginBottom: "50px"
+    marginBottom: "75px"
+}
+
+export const eventBtnDiv = {
+    marginTop: "50px",
+    marginBottom: "100px",
+    textAlign: "center",
 }

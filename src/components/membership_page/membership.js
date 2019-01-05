@@ -16,7 +16,7 @@ class Membership extends React.Component {
                         <div style={styles.taglineMobile}>Working together is success</div>
                         <div style={styles.taglineMobile}>Achieving together is Build312</div>
                         <div style={styles.pricingBtnDivMobile}>
-                            <button class="btn btn-sm btn-primary" style={styles.pricingBtn}>Plan and Pricing</button>
+                            <button className="btn btn-sm btn-primary" style={styles.pricingBtn}>Plan and Pricing</button>
                         </div>
                     </div>
                     <img src={bg} style={styles.backgroundPicMobile} alt="background-pic" />
