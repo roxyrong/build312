@@ -137,3 +137,28 @@ export const eventBtnDiv = {
     marginBottom: "100px",
     textAlign: "center",
 }
+
+export const premiumCard = {
+    marginTop: "75px"
+}
+
+export const membershipHeader = {
+    marginBottom: "50px",
+    letterSpacing: "1px",
+    marginLeft: "40%",
+    fontWeight: "bold"
+}
+
+export const membershipCard = {
+    width: "95%"
+}
+
+export const joinBtn = {
+    backgroundColor: "#1DCB8B",
+    borderColor: "#1DCB8B",
+    letterSpacing: "1px",
+    boxShadow: "#1DCB8B",
+    marginTop: "25px",
+    marginBottom: "50px",
+    width: "200px"
+}
