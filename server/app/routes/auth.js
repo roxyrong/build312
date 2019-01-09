@@ -22,6 +22,17 @@ module.exports = function(app, passport) {
     }
     ));
 
+    app.get('/auth/linkedin',
+        passport.authenticate('linkedin'),
+        function(req, res){
+            console.log(req, res);
+    });
+
+    app.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
+        successRedirect: '/dashboard',
+        failureRedirect: '/login'
+    }));
+
     function isLoggedIn(req, res, next) {
         if (req.isAuthenticated())
             return next();
