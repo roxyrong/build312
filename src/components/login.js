@@ -3,9 +3,6 @@ import * as appStyles from "../styles/app_styles";
 import NavBar from "./navbar"
 import * as styles from "../styles/auth_styles";
 import signinImage from "../assets/signin-image.jpg";
-import facebook from "../assets/facebook.png";
-import linkedin from "../assets/linkedin.png";
-import google from "../assets/google.png"
 
 
 class Login extends React.Component {
@@ -36,7 +33,7 @@ class Login extends React.Component {
                                 <p>Or login with: </p>
                                 <div>
                                     <a href='/auth/linkedin'><button class="btn btn-small" style={styles.linkedinBtn}><i class="fab fa-linkedin"></i> LinkedIn</button></a>
-                                    {/* <a href='/auth/google'><button class="btn btn-small" style={styles.socialBtn}><i class="fab fa-google"></i> Google</button></a> */}
+                                    <a href='/auth/google'><button class="btn btn-small" style={styles.googleBtn}><i class="fab fa-google"></i> Google</button></a>
                                     <a href='/auth/facebook'><button class="btn btn-small" style={styles.facebookBtn}><i class="fab fa-facebook"></i> Facebook</button></a>
                                 </div>                             
                             </div>

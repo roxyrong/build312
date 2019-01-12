@@ -3,7 +3,7 @@ var bCrypt = require('bcrypt-nodejs');
 module.exports = function(passport, user) {
  
     var User = user;
-    var FacebookStrategy = require('passport-facebook').Strategy;
+    var GoogleStrategy = require('passport-google-oauth20').Strategy;
 
     passport.serializeUser(function(user, done) {
         done(null, user.id);
@@ -19,18 +19,18 @@ module.exports = function(passport, user) {
         }); 
     });
 
-    passport.use(new FacebookStrategy({
-        clientID: process.env.FACEBOOK_APP_ID,
-        clientSecret: process.env.FACEBOOK_APP_SECRET,
-        callbackURL: "/auth/facebook/callback",
-        profileFields: ['last_name', 'first_name', 'email']
+    passport.use(new GoogleStrategy({
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: "/auth/google/callback"
       },
-    function(accessToken, refreshToken, profile, done) {
+      function(accessToken, refreshToken, profile, done) {
+
         var generateHash = function(password) {
             return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
         };
 
-        var email = profile._json.email;
+        var email = profile.emails[0].value;
         User.findOne({
             where: {
                 email: email
@@ -43,8 +43,8 @@ module.exports = function(passport, user) {
                     {
                         email: email,
                         password: generateHash('password'),
-                        firstname: profile._json.first_name,
-                        lastname: profile._json.last_name
+                        firstname: profile.name.givenName,
+                        lastname: profile.name.familyName
                     };
                 User.create(data).then(function(newUser, created) {
                     console.log(newUser);

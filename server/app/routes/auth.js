@@ -35,12 +35,18 @@ module.exports = function(app, passport) {
         passport.authenticate('facebook')
     );
 
-    app.get('/auth/facebook/callback', passport.authenticate('facebook', { 
-        failureRedirect: '/login' }),
-        function(req, res) {
-            // Successful authentication, redirect home.
-            res.redirect('/dashboard');
-    });
+    app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+        successRedirect: '/dashboard',
+        failureRedirect: '/login'
+    }));
+
+    app.get('/auth/google',
+        passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+    app.get('/auth/google/callback', passport.authenticate('google', {
+        successRedirect: '/dashboard',
+        failureRedirect: '/login'
+    }));
 
     function isLoggedIn(req, res, next) {
         if (req.isAuthenticated())

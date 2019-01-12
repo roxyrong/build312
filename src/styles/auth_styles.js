@@ -51,6 +51,13 @@ export const linkedinBtn = {
     textAlign: "left"
 }
 
+export const googleBtn = {
+    minWidth: "120px",
+    marginRight: "10px",
+    color: "#CE5542",
+    textAlign: "left"
+}
+
 export const facebookBtn = {
     minWidth: "120px",
     color: "#3B5994",
