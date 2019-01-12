@@ -25,7 +25,7 @@ export const submitBtn = {
 
 export const redirectLink = {
     marginTop: "50px",
-    marginLeft: "50px",
+    marginLeft: "25%",
     color: "#1DCB8B",
     textDecorationLine: "underline"
 }
@@ -36,8 +36,8 @@ export const signupInput = {
 
 export const signinImage = {
     marginTop: "75px",
-    marginLeft: "25px"
-
+    marginLeft: "15%",
+    height: "300px"
 }
 
 export const socialLogin = {
@@ -45,21 +45,28 @@ export const socialLogin = {
 }
 
 export const linkedinBtn = {
-    minWidth: "120px",
+    width: "100px",
     marginRight: "10px",
     color: "#2E77AF",
-    textAlign: "left"
+    textAlign: "left",
+    paddingLeft: "0",
+    paddingRight: "0"
 }
 
 export const googleBtn = {
-    minWidth: "120px",
+    width: "100px",
     marginRight: "10px",
     color: "#CE5542",
-    textAlign: "left"
+    textAlign: "left",
+    paddingLeft: "0",
+    paddingRight: "0"
 }
 
 export const facebookBtn = {
-    minWidth: "120px",
+    width: "100px",
+    marginRight: "10px",
     color: "#3B5994",
-    textAlign: "left"
+    textAlign: "left",
+    paddingLeft: "0",
+    paddingRight: "0"
 }

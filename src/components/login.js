@@ -11,7 +11,7 @@ class Login extends React.Component {
             <div className="App" style={appStyles.appStyle}>
                 <NavBar />
                 <div class="container" style={styles.signupForm}>
-                    <div class="row">
+                    <div class="row flex-column-reverse flex-sm-row">
                         <div class="col-sm-6 m-0 p-0">
                             <img src={signinImage} alt="signup image" style={styles.signinImage}/>
                             <div style={styles.redirectLink}><a href="/signup" >Create an account</a></div>
