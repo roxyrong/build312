@@ -2,7 +2,10 @@ import React from "react";
 import * as appStyles from "../styles/app_styles";
 import NavBar from "./navbar"
 import * as styles from "../styles/auth_styles";
-import signinImage from "../assets/signin-image.jpg"
+import signinImage from "../assets/signin-image.jpg";
+import facebook from "../assets/facebook.png";
+import linkedin from "../assets/linkedin.png";
+import google from "../assets/google.png"
 
 
 class Login extends React.Component {
@@ -29,7 +32,14 @@ class Login extends React.Component {
                                 </div>
                                 <input class="btn btn-primary" style={styles.submitBtn}type="submit" value="Login" />
                             </form>
-                            <div>Or login with <i class="zmdi zmdi-facebook-box"></i> <i class="zmdi zmdi-linkedin"></i> <i class="zmdi zmdi-google"></i></div>
+                            <div style={styles.socialLogin}>
+                                <p>Or login with: </p>
+                                <div>
+                                    <a href='/auth/linkedin'><button class="btn btn-small" style={styles.linkedinBtn}><i class="fab fa-linkedin"></i> LinkedIn</button></a>
+                                    {/* <a href='/auth/google'><button class="btn btn-small" style={styles.socialBtn}><i class="fab fa-google"></i> Google</button></a> */}
+                                    <a href='/auth/facebook'><button class="btn btn-small" style={styles.facebookBtn}><i class="fab fa-facebook"></i> Facebook</button></a>
+                                </div>                             
+                            </div>
                         </div>
                     </div>
                 </div>

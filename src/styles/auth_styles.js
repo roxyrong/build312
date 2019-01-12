@@ -39,3 +39,20 @@ export const signinImage = {
     marginLeft: "25px"
 
 }
+
+export const socialLogin = {
+    marginTop: "75px"
+}
+
+export const linkedinBtn = {
+    minWidth: "120px",
+    marginRight: "10px",
+    color: "#2E77AF",
+    textAlign: "left"
+}
+
+export const facebookBtn = {
+    minWidth: "120px",
+    color: "#3B5994",
+    textAlign: "left"
+}

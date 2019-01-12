@@ -39,6 +39,7 @@ models.sequelize.sync().then(function() {
 var authRoute = require('./app/routes/auth.js')(app, passport);
 require('./app/config/passportLocal.js')(passport, models.user);
 require('./app/config/passportLinkedIn.js')(passport, models.user);
+require('./app/config/passportFacebook.js')(passport, models.user);
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));

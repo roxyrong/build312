@@ -23,15 +23,24 @@ module.exports = function(app, passport) {
     ));
 
     app.get('/auth/linkedin',
-        passport.authenticate('linkedin'),
-        function(req, res){
-            console.log(req, res);
-    });
+        passport.authenticate('linkedin')
+    );
 
     app.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
         successRedirect: '/dashboard',
         failureRedirect: '/login'
     }));
+
+    app.get('/auth/facebook',
+        passport.authenticate('facebook')
+    );
+
+    app.get('/auth/facebook/callback', passport.authenticate('facebook', { 
+        failureRedirect: '/login' }),
+        function(req, res) {
+            // Successful authentication, redirect home.
+            res.redirect('/dashboard');
+    });
 
     function isLoggedIn(req, res, next) {
         if (req.isAuthenticated())
