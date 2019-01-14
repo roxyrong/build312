@@ -1,40 +1,37 @@
 import React from "react";
 import * as styles from "../../styles/membership_styles"
-import bg from '../../assets/background.jpg';
-import MediaQuery from 'react-responsive';
+import bg from '../../assets/membership_bg.png';
+
 
 class Membership extends React.Component {
     render() {
         return (
             <div>
-                <MediaQuery query="(max-width: 768px)">
-                    <div className="container" style={styles.container}>
-                        <div style={styles.pageTitleMobile}>BUILD312</div>
-                        <p style={styles.pageSubTitleMobile}>MEMBERSHIP PROGRAM</p>
-                        <div style={styles.taglineMobile}>Coming together is a beginning</div>
-                        <div style={styles.taglineMobile}>Keeping together is progress</div>
-                        <div style={styles.taglineMobile}>Working together is success</div>
-                        <div style={styles.taglineMobile}>Achieving together is Build312</div>
-                        <div style={styles.pricingBtnDivMobile}>
-                            <button className="btn btn-sm btn-primary" style={styles.pricingBtn}>Plan and Pricing</button>
-                        </div>
+                <div className="col-md-8" style={styles.membershipHeader}>
+                    <div className="container" style={styles.bgContainer}>
+                        <h2 style={styles.header}>Membership</h2>
+                        <p style={styles.headerDesc}><span style={styles.priceHeader}>$49.99</span> for $200+ value of unlimited </p>
+                        <p style={styles.headerDesc}>access to panel discussion and more</p>
+                        <button className="btn btn-lg btn-primary" style={styles.headerBtn}>Get Started</button>
                     </div>
-                    <img src={bg} style={styles.backgroundPicMobile} alt="background-pic" />
-                </MediaQuery>
-                <MediaQuery query="(min-width: 769px)">
-                    <div className="container" style={styles.container}>
-                        <div style={styles.pageTitle}>BUILD312</div>
-                        <p style={styles.pageSubTitle}>MEMBERSHIP PROGRAM</p>
-                        <div style={styles.tagline}>Coming together is a beginning</div>
-                        <div style={styles.tagline}>Keeping together is progress</div>
-                        <div style={styles.tagline}>Working together is success</div>
-                        <div style={styles.tagline}>Achieving together is Build312</div>
-                        <div style={styles.pricingBtnDiv}>
-                            <button class="btn btn-lg btn-primary" style={styles.pricingBtn}>Plan and Pricing</button>
-                        </div>
-                    </div>
-                    <img src={bg} style={styles.backgroundPic} alt="background-pic" />
-                </MediaQuery>
+                </div>
+                <div className="m-0 p-0">
+                    <img src={bg} alt="membership bg" style={styles.bg}/>
+                </div>
+                <div className="d-flex m-0 p-0 flex-column align-items-center">
+                    <h2 style={styles.benefitHeader}>Benefits</h2>
+                    <h4 style={styles.benefitSubHeader}>Events</h4>
+                    <p style={styles.benefitItem}>Complimentary access to Build312 monthly panel discussion for you and your guest</p>
+                    <p style={styles.benefitItem}>Member price (at least 20% off) to Build312 conferences and forums</p>
+                    <p style={styles.benefitItem}>Opportunities to have exclusive discounted / complimentary ticket for Build312 partner events</p>
+                    <h4 style={styles.benefitSubHeader}>Community</h4>
+                    <p style={styles.benefitItem}>One-on-one business coaching and mentorship</p>
+                    <p style={styles.benefitItem}>Exclusive access to Build312 networking opportunities and ad-hoc training sessions</p>
+                    <h4 style={styles.benefitSubHeader}>Service</h4>
+                    <p style={styles.benefitItem}>Access to all other members and in-house service providers</p>
+                    <p style={styles.benefitItem}>One complimentary Coworking Day each month at CoGen</p>
+                    <p style={styles.benefitItem}>Opportunities to get involved in event coordination</p>
+                </div>
             </div>
         );
 

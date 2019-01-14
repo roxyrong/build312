@@ -1,9 +1,9 @@
 import React from "react";
 import * as appStyles from "../styles/app_styles";
-import NavBar from "./navbar"
-import Membership from "./membership_page/membership"
-// import Description from "./membership_page/description"
-// import PremiumCard from './membership_page/premium_card'
+import NavBar from "./landing_page/navbar"
+import Membership from "./membership_page/membership v2"
+import Description from "./membership_page/description"
+import PremiumCard from './membership_page/premium_card'
 
 
 class MembershipPage extends React.Component {
@@ -12,6 +12,8 @@ class MembershipPage extends React.Component {
             <div className="App" style={appStyles.appStyle}>
                 <NavBar />
                 <Membership />
+                <Description />
+                <PremiumCard />
             </div>
         );
     }
