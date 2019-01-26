@@ -38,13 +38,13 @@ export const headerBtn = {
 }
 
 export const benefitHeader = {
-    fondWeight: "bold",
+    fontWeight: "bold",
     marginTop: "75px",
     letterSpacing: "2px"
 }
 
 export const benefitSubHeader = {
-    fondWeight: "bold",
+    fontWeight: "bold",
     marginTop: "75px",
     marginBottom: "25px",
     letterSpacing: "2px"

@@ -6,6 +6,7 @@ const favicon    = require('express-favicon');
 const passport   = require('passport');
 const session    = require('express-session');
 const mysql      = require('mysql');
+const SquareConnect = require('square-connect');
 require('dotenv').config()
 
 // express
@@ -36,11 +37,26 @@ models.sequelize.sync().then(function() {
 });
 
 // auth
-var authRoute = require('./app/routes/auth.js')(app, passport);
-require('./app/config/passportLocal.js')(passport, models.user);
-require('./app/config/passportLinkedIn.js')(passport, models.user);
-require('./app/config/passportFacebook.js')(passport, models.user);
-require('./app/config/passportGoogle.js')(passport, models.user);
+var authRoute = require('./app/routes/auth')(app, passport);
+require('./app/config/passportLocal')(passport, models.user);
+require('./app/config/passportLinkedIn')(passport, models.user);
+require('./app/config/passportFacebook')(passport, models.user);
+require('./app/config/passportGoogle')(passport, models.user);
+
+// payment
+var defaultClient = SquareConnect.ApiClient.instance;
+var squareOauth2 = defaultClient.authentications['oauth2'];
+squareOauth2.accessToken = process.env.SQUARE_OAUTH2;
+
+var api = new SquareConnect.LocationsApi();
+
+api.listLocations().then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
+
+
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));

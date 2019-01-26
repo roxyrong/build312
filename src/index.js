@@ -5,9 +5,11 @@ import LandingPage from "./components/landing_page";
 import EventPage from './components/event_page';
 import Signup from './components/signup';
 import Login from './components/login';
+import MembershipPage from './components/membership_page';
+import Payment from './components/payment'
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import MembershipPage from './components/membership_page';
+
 
 class App extends React.Component {
     render() {
@@ -19,6 +21,7 @@ class App extends React.Component {
               <Route exact path='/signup' component={Signup}/>
               <Route exact path='/login' component={Login}/>
               <Route exact path='/membership' component={MembershipPage}/>
+              <Route exact path='/payment' component={Payment}/>
             </Switch>
           </div>
     
