@@ -1,12 +1,12 @@
 import React from "react";
 import * as styles from "../../styles/payment_styles";
+import axios from 'axios';
 
 class PaymentForm extends React.Component {  
   constructor(props){
     super(props);
     this.state = {
-      cardBrand: "",
-      nonce: undefined
+      cardBrand: ""
     }
     this.requestCardNonce = this.requestCardNonce.bind(this);
   }
@@ -17,121 +17,117 @@ class PaymentForm extends React.Component {
   }
 
   componentDidMount(){
-    const config = {
-      applicationId: "sq0idp-rARHLPiahkGtp6mMz2OeCA",
-      locationId: "GMT96A77XABR1",
-      inputClass: "sq-input",
-      autoBuild: false,
-      inputStyles: [
-        {
-          fontSize: "16px",
-          fontFamily: "Helvetica Neue",
-          padding: "16px",
-          color: "#373F4A",
-          backgroundColor: "transparent",
-          lineHeight: "1.15em",
-          placeholderColor: "#000",
-          _webkitFontSmoothing: "antialiased",
-          _mozOsxFontSmoothing: "grayscale"
-        }
-      ], 
-      cardNumber: {
-        elementId: "sq-card-number",
-        placeholder: "• • • •  • • • •  • • • •  • • • •"
-      },
-      cvv: {
-        elementId: "sq-cvv",
-        placeholder: "CVV"
-      },
-      expirationDate: {
-        elementId: "sq-expiration-date",
-        placeholder: "MM/YY"
-      },
-      postalCode: {
-        elementId: "sq-postal-code",
-        placeholder: "Zip"
-      },
-      callbacks: {
-        cardNonceResponseReceived: (errors, nonce, cardData) => {
-          if (errors) {
-            console.log("Encountered errors:");
-            errors.forEach(function(error) {
-              console.log("  " + error.message);
-            });
-            return;
-          }
-          this.setState({
-            nonce: nonce
-          })
-        },
-        unsupportedBrowserDetected: () => {
-        },
-
-        requestCardNonce: (event) => {
-          event.preventDefault();
-          this.requestCardNonce();
-        },
-        inputEventReceived: (inputEvent) => {
-          switch (inputEvent.eventType) {
-            case "focusClassAdded":
-              break;
-            case "focusClassRemoved":
-              break;
-            case "errorClassAdded":
-              document.getElementById("error").innerHTML =
-                "Please fix card information errors before continuing.";
-              break;
-            case "errorClassRemoved":
-              document.getElementById("error").style.display = "none";
-              break;
-            case "cardBrandChanged":
-              if(inputEvent.cardBrand !== "unknown"){
-                this.setState({
-                  cardBrand: inputEvent.cardBrand
-                })
-              } else {
-                this.setState({
-                  cardBrand: ""
-                })
+    fetch('/sq-payment-cred').then(
+      function(response) { 
+        return response.json()
+    }.bind(this)).then(
+      function(data) {
+        var applicationId = data['applicationId']
+        var locationId = data['locationId']
+        const config = {
+          applicationId: applicationId,
+          locationId: locationId,
+          inputClass: "sq-input",
+          autoBuild: false,
+          inputStyles: [
+            {
+              fontSize: "16px",
+              fontFamily: "Helvetica Neue",
+              padding: "16px",
+              color: "#373F4A",
+              backgroundColor: "transparent",
+              lineHeight: "1.15em",
+              placeholderColor: "#000",
+              _webkitFontSmoothing: "antialiased",
+              _mozOsxFontSmoothing: "grayscale"
+            }
+          ], 
+          cardNumber: {
+            elementId: "sq-card-number",
+            placeholder: "• • • •  • • • •  • • • •  • • • •"
+          },
+          cvv: {
+            elementId: "sq-cvv",
+            placeholder: "CVV"
+          },
+          expirationDate: {
+            elementId: "sq-expiration-date",
+            placeholder: "MM/YY"
+          },
+          postalCode: {
+            elementId: "sq-postal-code",
+            placeholder: "Zip"
+          },
+          callbacks: {
+            cardNonceResponseReceived: (errors, nonce, cardData) => {
+              if (errors) {
+                console.log("Encountered errors:");
+                errors.forEach(function(error) {
+                  console.log("  " + error.message);
+                });
+                return;
               }
-              break;
-            case "postalCodeChanged":
-              break;
-            default:
-              break;
+              document.getElementById('card-nonce').value = nonce;
+              document.getElementById('nonce-form').submit();
+            },
+            requestCardNonce: (event) => {
+              event.preventDefault();
+              this.requestCardNonce();
+            },
+            inputEventReceived: (inputEvent) => {
+              switch (inputEvent.eventType) {
+                case "errorClassAdded":
+                  document.getElementById("error").innerHTML =
+                    "Please fix card information errors before continuing.";
+                  break;
+                case "errorClassRemoved":
+                  document.getElementById("error").style.display = "none";
+                  break;
+                case "cardBrandChanged":
+                  if(inputEvent.cardBrand !== "unknown"){
+                    this.setState({
+                      cardBrand: inputEvent.cardBrand
+                    })
+                  } else {
+                    this.setState({
+                      cardBrand: ""
+                    })
+                  }
+                  break;
+                default:
+                  break;
+              }
+            }
           }
-        },
-        paymentFormLoaded: function() {
-          document.getElementById('name').style.display = "inline-flex";
-          // don't need?
-        }
-      }
-    };
-    this.paymentForm = new this.props.paymentForm(config);
-    this.paymentForm.build();
+        };
+        this.paymentForm = new this.props.paymentForm(config);
+        this.paymentForm.build();
+    }.bind(this))
   }
   
   render() {
     return (
-      <div id="form-container">
+      <div id="form-container" style={styles.formContainer}>
+        <p>
+          <span style={styles.leftCenter}>Enter Card Info Below </span>
+          <span style={styles.blockRight}>
+            {this.state.cardBrand.toUpperCase()}
+          </span>
+        </p>
         <div id="sq-ccbox">
-          <p>
-            <span style={styles.leftCenter}>Enter Card Info Below </span>
-            <span style={styles.blockRight}>
-              {this.state.cardBrand.toUpperCase()}
-            </span>
-          </p>
-          <div id="cc-field-wrapper">
-            <div id="sq-card-number"></div>
+          <form id="nonce-form"  novalidate action="process-payment" method="post">
+            <div id="cc-field-wrapper">
+              <div id="sq-card-number"></div>
+              <div id="sq-cvv"></div>
+              <div id="sq-expiration-date"></div>
+            </div>
+            <div id="sq-postal-code"></div>
+            <input id="name" style={styles.name} type="text" placeholder="Name"/> 
+            <button className="sq-button" id="sq-creditcard" onClick={this.requestCardNonce}>Pay</button>
+            <p style={styles.center} id="error"></p>
             <input type="hidden" id="card-nonce" name="nonce" />
-            <div id="sq-expiration-date"></div>
-            <div id="sq-cvv"></div>
-          </div>
-          <input id="name" style={styles.name} type="text" placeholder="Name"/>
-          <div id="sq-postal-code"></div>
-          <button className="button-credit-card" onClick={this.requestCardNonce}>Pay</button>
+          </form>
         </div>
-        <p style={styles.center} id="error"></p>
       </div>
     );
   }

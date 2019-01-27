@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import NavBar from "./navbar"
 import PaymentForm from './payment_page/payment_form';
+import * as appStyles from "../styles/app_styles";
 
 class Payment extends Component {
   constructor(props){
@@ -23,10 +25,13 @@ class Payment extends Component {
 
   render() {
     return (
-      this.state.loaded &&
-        <PaymentForm
-          paymentForm={ window.SqPaymentForm }
-        />
+        this.state.loaded &&
+        <div className="App" style={appStyles.appStyle}>
+            <NavBar />
+            <PaymentForm
+            paymentForm={ window.SqPaymentForm }
+            />
+        </div>
     );
   }
 }
