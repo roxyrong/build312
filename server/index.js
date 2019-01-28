@@ -52,7 +52,7 @@ require('./app/config/passportGoogle')(passport, models.user);
 
 var defaultClient = SquareConnect.ApiClient.instance;
 var oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = process.env.SQAURE_SB_ACCESS_TOKEN;
+oauth2.accessToken = process.env.SQUARE_SB_ACCESS_TOKEN;
 
 app.post('/process-payment', function(req,res,next){
   var request_params = req.body;
