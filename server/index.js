@@ -7,6 +7,7 @@ const passport   = require('passport');
 const session    = require('express-session');
 const mysql      = require('mysql');
 const SquareConnect = require('square-connect');
+const prerender = require('prerender-node');
 var util = require('util');
 require('dotenv').config()
 
@@ -53,6 +54,17 @@ require('./app/config/passportGoogle')(passport, models.user);
 var defaultClient = SquareConnect.ApiClient.instance;
 var oauth2 = defaultClient.authentications['oauth2'];
 oauth2.accessToken = process.env.SQUARE_SB_ACCESS_TOKEN;
+
+// SEO 
+prerender.set('prerenderToken', process.env.PRERENDER_TOKEN)
+prerender.set('prerender_service_url', process.env.PRERENDER_SERVICE_URL)
+prerender.set('forwardHeaders', true)
+prerender.crawlerUserAgents.push('googlebot');
+prerender.crawlerUserAgents.push('bingbot');
+prerender.crawlerUserAgents.push('baiduspider');
+app.use(prerender);
+
+// payment
 
 app.post('/process-payment', function(req,res,next){
   var request_params = req.body;
