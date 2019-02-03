@@ -10,6 +10,12 @@ export const bg = {
     maxHeight: "800px"
 }
 
+export const mobile_bg = {
+    marginTop: "-600px",
+    width: "100%",
+    minHeight: "600px"
+}
+
 export const bgContainer = {
     marginLeft: "10%"
 }
@@ -51,5 +57,7 @@ export const benefitSubHeader = {
 }
 
 export const benefitItem = {
-    letterSpacing: "1px"
+    letterSpacing: "1px",
+    marginLeft: "10px",
+    marginRight: "10px"
 }

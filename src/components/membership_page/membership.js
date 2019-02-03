@@ -1,6 +1,8 @@
 import React from "react";
 import * as styles from "../../styles/membership_styles"
 import bg from '../../assets/membership_bg.png';
+import mobile_bg from '../../assets/membership_bg_mobile.png';
+import MediaQuery from 'react-responsive';
 
 
 class Membership extends React.Component {
@@ -16,7 +18,12 @@ class Membership extends React.Component {
                     </div>
                 </div>
                 <div className="m-0 p-0">
-                    <img src={bg} alt="membership bg" style={styles.bg}/>
+                    <MediaQuery query='(max-width: 768px)'>
+                        <img src={mobile_bg} alt="membership bg" style={styles.mobile_bg}/>
+                    </MediaQuery>
+                    <MediaQuery query='(min-width: 769px)'>
+                        <img src={bg} alt="membership bg" style={styles.bg}/>
+                    </MediaQuery>
                 </div>
                 <div className="d-flex m-0 p-0 flex-column align-items-center">
                     <h2 style={styles.benefitHeader}>Benefits</h2>

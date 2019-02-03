@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "/static/media/intro_video_screenshot.a5bd8eea.png"
   },
   {
-    "revision": "289d9b223f32c29ad654",
-    "url": "/static/js/main.289d9b22.chunk.js"
+    "revision": "796091df37c6cc66dfac",
+    "url": "/static/js/main.796091df.chunk.js"
   },
   {
-    "revision": "dc4593f7b9214d74187c58c83b76c559",
-    "url": "/static/media/membership_bg.dc4593f7.png"
+    "revision": "4e79b3c94f9cb8cccd9955b4afa2c58e",
+    "url": "/static/media/membership_bg_mobile.4e79b3c9.png"
   },
   {
     "revision": "229c360febb4351a89df",
@@ -28,8 +28,8 @@ self.__precacheManifest = [
     "url": "/static/media/black_logo.521a3426.jpg"
   },
   {
-    "revision": "d586706c27e37b866653635ab8c968fb",
-    "url": "/static/media/signin-image.d586706c.jpg"
+    "revision": "dc4593f7b9214d74187c58c83b76c559",
+    "url": "/static/media/membership_bg.dc4593f7.png"
   },
   {
     "revision": "9a90ea84a2a457e11f8275ce41ac592c",
@@ -44,15 +44,19 @@ self.__precacheManifest = [
     "url": "/static/media/signup-image.75eb7c4e.jpg"
   },
   {
-    "revision": "227a3d41885277cc9cc9",
-    "url": "/static/js/1.227a3d41.chunk.js"
+    "revision": "d586706c27e37b866653635ab8c968fb",
+    "url": "/static/media/signin-image.d586706c.jpg"
   },
   {
-    "revision": "227a3d41885277cc9cc9",
-    "url": "/static/css/1.94168a59.chunk.css"
+    "revision": "4ddfa749cc9b382e18fe",
+    "url": "/static/js/1.4ddfa749.chunk.js"
   },
   {
-    "revision": "060bc3350c37462e903bd27a3f512d63",
+    "revision": "4ddfa749cc9b382e18fe",
+    "url": "/static/css/1.0697f8b8.chunk.css"
+  },
+  {
+    "revision": "bd2a21e900a572135dc68adb4770cc33",
     "url": "/index.html"
   }
 ];

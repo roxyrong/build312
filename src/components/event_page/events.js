@@ -34,7 +34,6 @@ class Events extends React.Component {
             let events = this.state.eventbriteData.events;
             let today = new Date();
             events.reverse().map((event, i) => {
-                console.log(event);
                 let n = event.start.local.indexOf("T");
                 let date = event.start.local.substring(0, n);
                 let eventDate = new Date(date);
