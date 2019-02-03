@@ -1,4 +1,4 @@
-export const pastEvents = {
+export const eventContainer = {
     marginTop: "125px"
 }
 
