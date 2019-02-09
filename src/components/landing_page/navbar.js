@@ -69,7 +69,7 @@ class NavBar extends React.Component{
                             <li className="nav-item"><a className="nav-link" onMouseEnter={()=>this.handleHover("Jobs")} 
                                 onMouseLeave={()=>this.handleHover("Jobs")} style={navButton["Jobs"]} href="/">Jobs</a></li>
                             <li className="nav-item"><a className="nav-link" onMouseEnter={()=>this.handleHover("Donate")} 
-                                onMouseLeave={()=>this.handleHover("Donate")} style={navButton["Donate"]} href="/">Donate</a></li>
+                                onMouseLeave={()=>this.handleHover("Donate")} style={navButton["Donate"]} href="/donate">Donate</a></li>
                         </ul>
                         <ul className="navbar-nav pull-right">
                             <li className="nav-item"><a className="nav-link" onMouseEnter={()=>this.handleHover("Signup")} 
@@ -102,7 +102,7 @@ class NavBar extends React.Component{
                                 <li className="nav-item"><a className="nav-link" onMouseEnter={()=>this.handleHover("Jobs")} 
                                     onMouseLeave={()=>this.handleHover("Jobs")} style={navButton["Jobs"]} href="/">Jobs</a></li>
                                 <li className="nav-item"><a className="nav-link" onMouseEnter={()=>this.handleHover("Donate")} 
-                                    onMouseLeave={()=>this.handleHover("Donate")} style={navButton["Donate"]} href="/">Donate</a></li>
+                                    onMouseLeave={()=>this.handleHover("Donate")} style={navButton["Donate"]} href="/donate">Donate</a></li>
                             </ul>
                             <ul className="navbar-nav pull-right">
                                 <li className="nav-item"><a className="nav-link" onMouseEnter={()=>this.handleHover("Signup")} 
