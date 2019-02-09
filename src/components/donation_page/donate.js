@@ -6,14 +6,16 @@ class Donate extends React.Component {
     constructor() {
         super();
         this.state = {
-            activeBtn: 'monthly'
+            activeBtn: 'once'
         }
         this.freqBtnOnChange = this.freqBtnOnChange.bind(this);
     }
 
     freqBtnOnChange(event) {
-        console.log(event);
-        console.log(this.state);
+        event.preventDefault();
+        this.setState({
+            activeBtn: event.target.id
+        });
     }
 
     render() {
@@ -26,11 +28,13 @@ class Donate extends React.Component {
                                 <div class="card-body" style={styles.donationCardBody}>
                                     <form action="/process-donate">
                                         <div class="btn-group btn-group-toggle" data-toggle="buttons" style={styles.freqBtn}>
-                                            <label class="btn btn-outline-dark active" style={styles.donateBtn}>
-                                                <input type="radio" name="frequency" id="once" checked/> Once
+                                            <label class="btn btn-outline-light active" 
+                                                   style={this.state.activeBtn === 'once' ? styles.donateBtnActive : styles.donateBtn}>
+                                                <input type="radio" name="frequency" id="once" onFocus={this.freqBtnOnChange}/> Once
                                             </label>
-                                            <label class="btn btn-outline-dark" style={styles.donateBtn} >
-                                                <input type="radio" name="frequency" id="monthly"/> Monthly
+                                            <label class="btn btn-outline-light" 
+                                                   style={this.state.activeBtn === 'monthly' ? styles.donateBtnActive : styles.donateBtn} >
+                                                <input type="radio" name="frequency" id="monthly" onFocus={this.freqBtnOnChange}/> Monthly
                                             </label>
                                         </div>
                                         <p>Choose amount to give:</p>

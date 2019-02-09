@@ -26,7 +26,15 @@ export const freqBtn = {
 
 export const donateBtn = {
     width: "150px",
-    // borderColor: "#1DCB8B"
+    borderColor: "#1DCB8B",
+    color: "#1DCB8B"
+}
+
+export const donateBtnActive = {
+    width: "150px",
+    borderColor: "#1DCB8B",
+    backgroundColor: "#1DCB8B",
+    color: "#FFF"
 }
 
 export const amountLabel = {
@@ -35,8 +43,8 @@ export const amountLabel = {
 
 export const donateSubmitBtn = {
     width: "300px",
-    // backgroundColor: "#1DCB8B",
-    // borderColor: "#1DCB8B",
+    backgroundColor: "#1DCB8B",
+    borderColor: "#1DCB8B",
     marginTop: "25px"
 }
 
