@@ -1,13 +1,14 @@
 export const bg = {
     width: "100%",
-    filter: "opacity(30%)",
+    filter: "opacity(25%)",
     zIndex: "-1",
     position: "relative",
-    minHeight: "600px"
+    minHeight: "600px",
+    marginTop: "-525px"
 }
 
 export const container = {
-    marginTop: "-33%"
+    marginTop: "175px"
 }
 
 export const donationCard = {
@@ -25,9 +26,7 @@ export const freqBtn = {
 
 export const donateBtn = {
     width: "150px",
-    outlineColor: "#1DCB8B"
-    // backgroundColor: "#1DCB8B",
-    // borderColor: "#1DCB8B",
+    // borderColor: "#1DCB8B"
 }
 
 export const amountLabel = {
@@ -36,7 +35,12 @@ export const amountLabel = {
 
 export const donateSubmitBtn = {
     width: "300px",
-    backgroundColor: "#1DCB8B",
-    borderColor: "#1DCB8B",
+    // backgroundColor: "#1DCB8B",
+    // borderColor: "#1DCB8B",
     marginTop: "25px"
+}
+
+export const donateSlogan = {
+    textAlign: "center",
+    letterSpacing: "1px"
 }
