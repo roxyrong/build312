@@ -15,13 +15,13 @@ class Events extends React.Component {
         fetch('/event-data-url')
         .then(function(response) { 
             return response.text()
-        }.bind(this))
+        })
         .then(function(url) {
             return fetch(url)
-        }.bind(this))
+        })
         .then(function(response) { 
             return response.json() 
-        }.bind(this))
+        })
         .then(function(data) {
             this.setState({eventbriteData: data})
         }.bind(this));        
@@ -33,14 +33,14 @@ class Events extends React.Component {
         if (this.state.eventbriteData != null) {
             let events = this.state.eventbriteData.events;
             let today = new Date();
-            events.reverse().map((event, i) => {
+            events.reverse().forEach((event, i) => {
                 let n = event.start.local.indexOf("T");
                 let date = event.start.local.substring(0, n);
                 let eventDate = new Date(date);
                 let eventHTML = (
                     <div class="col-lg-4 col-md-6" style={styles.eventCard}>                   
                         <div class="card shadow-sm">
-                            <img class="card-img-top" src={event.logo.url} alt="Card image cap"/>
+                            <img class="card-img-top" src={event.logo.url} alt="card_img_top"/>
                             <div class="card-body">
                                 <h5 class="card-title">{event.name.text}</h5>
                                 <p class="card-text" style={styles.eventDate}><small class="text-muted">{date}</small></p>
@@ -57,6 +57,7 @@ class Events extends React.Component {
                 } else {
                     pastEvents.push(eventHTML)
                 };
+                return
             })
         } 
         return (

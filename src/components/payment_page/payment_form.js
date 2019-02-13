@@ -1,6 +1,5 @@
 import React from "react";
 import * as styles from "../../styles/payment_styles";
-import axios from 'axios';
 
 class PaymentForm extends React.Component {  
   constructor(props){
@@ -20,7 +19,7 @@ class PaymentForm extends React.Component {
     fetch('/sq-payment-cred').then(
       function(response) { 
         return response.json()
-    }.bind(this)).then(
+    }).then(
       function(data) {
         var applicationId = data['applicationId']
         var locationId = data['locationId']

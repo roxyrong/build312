@@ -37,7 +37,7 @@ class Signup extends React.Component {
                             </form>
                         </div>
                         <div class="col-sm-6 m-0 p-0">
-                            <img src={signupImage} alt="signup image" style={styles.signupImage}/>
+                            <img src={signupImage} alt="signup" style={styles.signupImage}/>
                             <div style={styles.redirectLink}><a href="/login" >I am already a member</a></div>
                         </div>
                     </div>
