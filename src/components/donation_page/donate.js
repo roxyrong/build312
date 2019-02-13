@@ -26,15 +26,15 @@ class Donate extends React.Component {
                         <div class="col-md-4 m-0 p-0">
                             <div class="card" style={styles.donationCard}>
                                 <div class="card-body" style={styles.donationCardBody}>
-                                    <form action="/process-donate">
+                                    <form action="/process-donate" method="GET">
                                         <div class="btn-group btn-group-toggle" data-toggle="buttons" style={styles.freqBtn}>
-                                            <label class="btn btn-outline-light active" 
+                                            <label class="btn btn-outline-light active" onFocus={this.freqBtnOnChange}
                                                    style={this.state.activeBtn === 'once' ? styles.donateBtnActive : styles.donateBtn}>
-                                                <input type="radio" name="frequency" id="once" onFocus={this.freqBtnOnChange}/> Once
+                                                <input type="radio" name="once" id="once" checked={this.state.activeBtn === 'once'}/> Once
                                             </label>
-                                            <label class="btn btn-outline-light" 
+                                            <label class="btn btn-outline-light" onFocus={this.freqBtnOnChange}
                                                    style={this.state.activeBtn === 'monthly' ? styles.donateBtnActive : styles.donateBtn} >
-                                                <input type="radio" name="frequency" id="monthly" onFocus={this.freqBtnOnChange}/> Monthly
+                                                <input type="radio" name="monthly" id="monthly" checked={this.state.activeBtn === 'monthly'} /> Monthly
                                             </label>
                                         </div>
                                         <p>Choose amount to give:</p>
@@ -56,7 +56,7 @@ class Donate extends React.Component {
                                                 <label for="250" style={styles.amountLabel}>$250</label>
                                             </div>
                                             <div>
-                                                <input type="radio" id="other" name="amount" value="" />
+                                                <input type="radio" id="other" name="amount" value=""/>
                                                 <label for="other" style={styles.amountLabel}><input type="text" name="others" placeholder="Custom amount"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​</label>
                                             </div>
                                         </div>
