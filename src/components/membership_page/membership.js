@@ -14,7 +14,7 @@ class Membership extends React.Component {
                         <h2 style={styles.header}>Membership</h2>
                         <p style={styles.headerDesc}><span style={styles.priceHeader}>$49.99</span> for $200+ value of unlimited </p>
                         <p style={styles.headerDesc}>access to panel discussion and more</p>
-                        <button className="btn btn-lg btn-primary" style={styles.headerBtn}>Get Started</button>
+                        <a href="/membership/payment"><button className="btn btn-lg btn-primary" style={styles.headerBtn}>Get Started</button></a>
                     </div>
                 </div>
                 <div className="m-0 p-0">

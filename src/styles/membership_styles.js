@@ -61,3 +61,19 @@ export const benefitItem = {
     marginLeft: "10px",
     marginRight: "10px"
 }
+
+// premium card
+export const premiumCard = {
+    marginTop: "150px"
+}
+
+export const membershipCard = {
+    width: "95%"
+}
+
+export const checkoutBtn = {
+    backgroundColor: "#1DCB8B",
+    borderColor: "#1DCB8B",
+    letterSpacing: "1px",
+    boxShadow: "#1DCB8B"
+}

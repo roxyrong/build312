@@ -6,6 +6,7 @@ import EventPage from './components/event_page';
 import Signup from './components/signup';
 import Login from './components/login';
 import MembershipPage from './components/membership_page';
+import MembershipPayment from './components/membership_payment';
 import Payment from './components/payment'
 import DonatePage from './components/donation_page'
 import * as serviceWorker from './serviceWorker';
@@ -22,6 +23,7 @@ class App extends React.Component {
               <Route exact path='/signup' component={Signup}/>
               <Route exact path='/login' component={Login}/>
               <Route exact path='/membership' component={MembershipPage}/>
+              <Route exact path='/membership/payment' component={MembershipPayment} />
               <Route exact path='/payment' component={Payment}/>
               <Route exact path='/donate' component={DonatePage} />
             </Switch>
