@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import reducers from './reducers';
 import LandingPage from "./components/landing_page";
 import EventPage from './components/event_page';
 import Signup from './components/signup';
@@ -11,11 +15,6 @@ import Payment from './components/payment'
 import DonatePage from './components/donation_page'
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import reducers from './reducers';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import ReduxPromise from 'redux-promise';
-import thunk from 'redux-thunk';
 
 const store = createStore(reducers, applyMiddleware(thunk));
 

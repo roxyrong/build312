@@ -1,4 +1,6 @@
 import React from "react";
+import axios from 'axios';
+import { paymentConfig } from './payment_config';
 import * as styles from "../../styles/payment_styles";
 
 class PaymentForm extends React.Component {  
@@ -16,89 +18,14 @@ class PaymentForm extends React.Component {
   }
 
   componentDidMount(){
-    fetch('/sq-payment-cred').then(
-      function(response) { 
-        return response.json()
-    }).then(
-      function(data) {
-        var applicationId = data['applicationId']
-        var locationId = data['locationId']
-        const config = {
-          applicationId: applicationId,
-          locationId: locationId,
-          inputClass: "sq-input",
-          autoBuild: false,
-          inputStyles: [
-            {
-              fontSize: "16px",
-              fontFamily: "Helvetica Neue",
-              padding: "16px",
-              color: "#373F4A",
-              backgroundColor: "transparent",
-              lineHeight: "1.15em",
-              placeholderColor: "#000",
-              _webkitFontSmoothing: "antialiased",
-              _mozOsxFontSmoothing: "grayscale"
-            }
-          ], 
-          cardNumber: {
-            elementId: "sq-card-number",
-            placeholder: "• • • •  • • • •  • • • •  • • • •"
-          },
-          cvv: {
-            elementId: "sq-cvv",
-            placeholder: "CVV"
-          },
-          expirationDate: {
-            elementId: "sq-expiration-date",
-            placeholder: "MM/YY"
-          },
-          postalCode: {
-            elementId: "sq-postal-code",
-            placeholder: "Zip"
-          },
-          callbacks: {
-            cardNonceResponseReceived: (errors, nonce, cardData) => {
-              if (errors) {
-                console.log("Encountered errors:");
-                errors.forEach(function(error) {
-                  console.log("  " + error.message);
-                });
-                return;
-              }
-              document.getElementById('card-nonce').value = nonce;
-              document.getElementById('nonce-form').submit();
-            },
-            requestCardNonce: (event) => {
-              event.preventDefault();
-              this.requestCardNonce();
-            },
-            inputEventReceived: (inputEvent) => {
-              switch (inputEvent.eventType) {
-                case "errorClassAdded":
-                  document.getElementById("error").innerHTML =
-                    "Please fix card information errors before continuing.";
-                  break;
-                case "errorClassRemoved":
-                  document.getElementById("error").style.display = "none";
-                  break;
-                case "cardBrandChanged":
-                  if(inputEvent.cardBrand !== "unknown"){
-                    this.setState({
-                      cardBrand: inputEvent.cardBrand
-                    })
-                  } else {
-                    this.setState({
-                      cardBrand: ""
-                    })
-                  }
-                  break;
-                default:
-                  break;
-              }
-            }
-          }
-        };
+    axios.get('/sq-payment-cred')
+    .then(
+      function(res) {
+        const data = res.data; 
+        const applicationId = data['applicationId'];
+        const locationId = data['locationId'];
+        const config = paymentConfig(applicationId, locationId);
+        console.log(config);
         this.paymentForm = new this.props.paymentForm(config);
         this.paymentForm.build();
     }.bind(this))
