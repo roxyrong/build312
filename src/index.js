@@ -10,8 +10,14 @@ import MembershipPayment from './components/membership_payment';
 import Payment from './components/payment'
 import DonatePage from './components/donation_page'
 import * as serviceWorker from './serviceWorker';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import reducers from './reducers';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxPromise from 'redux-promise';
+import thunk from 'redux-thunk';
 
+const store = createStore(reducers, applyMiddleware(thunk));
 
 class App extends React.Component {
     render() {
@@ -33,7 +39,14 @@ class App extends React.Component {
       }
 }
 
-ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById("root"));
+ReactDOM.render(
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>, 
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

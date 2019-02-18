@@ -1,34 +1,21 @@
 import React from "react";
 import axios from 'axios';
 import * as styles from "../../styles/event_styles";
+import { getEventbriteData } from '../../actions/eventbrite';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 class Events extends React.Component {
-    constructor(props) {
-        super(props);  
-        this.state = {
-            eventbriteData: null
-        };
-        this.geteventbriteData = this.getEventbriteData.bind(this);
-        this.geteventbriteData();
-    }
-
-    getEventbriteData() {        
-        axios.get('/event-data-url')
-        .then(res => {
-            let url = res.data;
-            axios.get(url)
-            .then(res => {
-                this.setState({eventbriteData: res.data});
-            });
-        })
-
+    
+    componentWillMount() {
+        this.props.getEventbriteData();
     }
 
     render() {
         let pastEvents = [];
         let upcomingEvents = [];
-        if (this.state.eventbriteData != null) {
-            let events = this.state.eventbriteData.events;
+        if (this.props.eventbriteData !== null) {
+            let events = this.props.eventbriteData.events;
             let today = new Date();
             events.reverse().forEach((event, i) => {
                 let n = event.start.local.indexOf("T");
@@ -73,5 +60,13 @@ class Events extends React.Component {
     }
 }
 
-export default Events;
+const mapStateToProps = (state) => {
+    return { eventbriteData: state.eventbrite }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({ getEventbriteData }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Events);
 
