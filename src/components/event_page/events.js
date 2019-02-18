@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 import * as styles from "../../styles/event_styles";
 
 class Events extends React.Component {
@@ -11,20 +12,16 @@ class Events extends React.Component {
         this.geteventbriteData();
     }
 
-    getEventbriteData() {
-        fetch('/event-data-url')
-        .then(function(response) { 
-            return response.text()
+    getEventbriteData() {        
+        axios.get('/event-data-url')
+        .then(res => {
+            let url = res.data;
+            axios.get(url)
+            .then(res => {
+                this.setState({eventbriteData: res.data});
+            });
         })
-        .then(function(url) {
-            return fetch(url)
-        })
-        .then(function(response) { 
-            return response.json() 
-        })
-        .then(function(data) {
-            this.setState({eventbriteData: data})
-        }.bind(this));        
+
     }
 
     render() {
