@@ -75,5 +75,7 @@ export const checkoutBtn = {
     backgroundColor: "#1DCB8B",
     borderColor: "#1DCB8B",
     letterSpacing: "1px",
-    boxShadow: "#1DCB8B"
+    boxShadow: "#1DCB8B",
+    marginTop:"2rem",
+    marginBottom: "100px"
 }
