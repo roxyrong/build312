@@ -35,6 +35,10 @@ app.get('/sq-payment-cred', (req, res) => {
   res.send(sqCred)
 })
 
+app.get('/stripe-public-key', (req, res) => {
+  res.send(process.env.STRIPE_PUBLIC_KEY)
+}); 
+
 // models  
 var models = require("./app/models");
 
@@ -93,7 +97,7 @@ app.post('/process-payment', function(req,res,next){
   }
 });
 
-const stripe = require("stripe")("sk_test_W6TiitmiIc4nJlCylXlfaUgD");
+const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
 app.post("/charge", async (req, res) => {
   try {
     console.log(req);

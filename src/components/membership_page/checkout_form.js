@@ -3,12 +3,12 @@ import {CardNumberElement, CardExpiryElement, CardCVCElement,  injectStripe} fro
 import * as styles from "../../styles/membership_styles"
 
 const stripeElementStyle = {
+    placeholder: '',
     style: {
         base: {
             'lineHeight': '1.35',
-            'fontSize': '1.11rem',
-            'color': '#495057',
-            'fontFamily': 'apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif'
+            'fontSize': '17px',
+            'color': '#495057'
         }
     }
 };
@@ -35,8 +35,6 @@ class CheckoutForm extends Component {
             }
         }.bind(this));
     })
-
-
   }
 
   render() {
@@ -78,20 +76,14 @@ class CheckoutForm extends Component {
             <div class="row mb-3">
                 <div class="col-md-5 mb-3">
                     <label for="country">Country</label>
-                    <select class="custom-select d-block w-100" id="country" required="">
-                    <option value="">Choose...</option>
-                    <option>United States</option>
-                    </select>
+                    <input type="text" class="form-control" id="country" placeholder="" required=""/>
                     <div class="invalid-feedback">
                         Please select a valid country.
                     </div>
                     </div>
                 <div class="col-md-4 mb-3">
                     <label for="state">State</label>
-                    <select class="custom-select d-block w-100" id="state" required="">
-                    <option value="">Choose...</option>
-                    <option>California</option>
-                    </select>
+                    <input type="text" class="form-control" id="state" placeholder="" required=""/>
                     <div class="invalid-feedback">
                         Please provide a valid state.
                     </div>
@@ -114,22 +106,24 @@ class CheckoutForm extends Component {
                     Credit card number required.
                 </div>
             </div>
-            <div class="mb-3">
-                <label for="card-expiry">Expiration date</label>
-                <span id="card-expiry" class="form-control">
-                    <CardExpiryElement {...stripeElementStyle}/>
-                </span>
-                <div class="invalid-feedback">
-                    Expiration date required.
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="card-expiry">Expiration date</label>
+                    <span id="card-expiry" class="form-control">
+                        <CardExpiryElement {...stripeElementStyle}/>
+                    </span>
+                    <div class="invalid-feedback">
+                        Expiration date required.
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3">
-                <label for="card-cvc">CVC</label>
-                <span id="card-cvc" class="form-control">
-                    <CardCVCElement {...stripeElementStyle} />
-                </span>
-                <div class="invalid-feedback">
-                    Card cvc required.
+                <div class="col-md-6 mb-3">
+                    <label for="card-cvc">CVC</label>
+                    <span id="card-cvc" class="form-control">
+                        <CardCVCElement {...stripeElementStyle} />
+                    </span>
+                    <div class="invalid-feedback">
+                        Card cvc required.
+                    </div>
                 </div>
             </div>
             <button class="btn btn-primary btn-lg btn-block" type="button" onClick={this.handleSubmit} style={styles.checkoutBtn}>
