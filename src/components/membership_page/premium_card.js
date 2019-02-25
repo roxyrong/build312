@@ -1,4 +1,5 @@
 import React from "react";
+import {Elements, StripeProvider} from 'react-stripe-elements';
 import * as styles from "../../styles/membership_styles"
 import MediaQuery from 'react-responsive';
 import membershipCard from '../../assets/membership card.png';
@@ -36,7 +37,11 @@ class PremiumCard extends React.Component {
                         </form>
                     </div>
                     <div class="col-md-8 px-md-5 order-md-1">
-                       <CheckoutForm />
+                    <StripeProvider apiKey="pk_test_y8YdDJvhltxJAPXe28bZuHk8">
+                        <Elements>
+                            <CheckoutForm />
+                        </Elements>
+                    </StripeProvider>
                     </div>
                 </div>
             </div>

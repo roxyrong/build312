@@ -96,13 +96,14 @@ app.post('/process-payment', function(req,res,next){
 const stripe = require("stripe")("sk_test_W6TiitmiIc4nJlCylXlfaUgD");
 app.post("/charge", async (req, res) => {
   try {
+    console.log(req);
     let {status} = await stripe.charges.create({
-      amount: 2000,
+      amount: 1000,
       currency: "usd",
       description: "An example charge",
-      source: req.body
+      source: req.body.token.id
     });
-
+    console.log(res.json({status}));
     res.json({status});
   } catch (err) {
     res.status(500).end();
