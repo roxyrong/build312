@@ -8,7 +8,7 @@ const session    = require('express-session');
 const mysql      = require('mysql');
 const SquareConnect = require('square-connect');
 const prerender = require('prerender-node');
-var util = require('util');
+const util = require('util');
 require('dotenv').config()
 
 // express
@@ -25,12 +25,12 @@ app.use(passport.session());
 
 // routes
 app.get('/event-data-url', (req, res) => {
-  var url = 'https://www.eventbriteapi.com/v3/users/me/owned_events/?token=' + process.env.EVENTBRITE_OAUTH + '&expand=organizer'
+  let url = 'https://www.eventbriteapi.com/v3/users/me/owned_events/?token=' + process.env.EVENTBRITE_OAUTH + '&expand=organizer'
   res.send(url);
 });
 
 app.get('/sq-payment-cred', (req, res) => {
-  var sqCred = {'applicationId': process.env.SQUARE_SB_APPLICATION_ID, 
+  let sqCred = {'applicationId': process.env.SQUARE_SB_APPLICATION_ID, 
               'locationId' : process.env.SQUARE_SB_LOCATION_ID}
   res.send(sqCred)
 })
@@ -40,7 +40,7 @@ app.get('/stripe-public-key', (req, res) => {
 }); 
 
 // models  
-var models = require("./app/models");
+const models = require("./app/models");
 
 models.sequelize.sync().then(function() {
   console.log('Nice! Database looks fine')
@@ -49,14 +49,14 @@ models.sequelize.sync().then(function() {
 });
 
 // auth
-var authRoute = require('./app/routes/auth')(app, passport);
+require('./app/routes/auth')(app, passport);
 require('./app/config/passportLocal')(passport, models.user);
 require('./app/config/passportLinkedIn')(passport, models.user);
 require('./app/config/passportFacebook')(passport, models.user);
 require('./app/config/passportGoogle')(passport, models.user);
 
-var defaultClient = SquareConnect.ApiClient.instance;
-var oauth2 = defaultClient.authentications['oauth2'];
+const defaultClient = SquareConnect.ApiClient.instance;
+let oauth2 = defaultClient.authentications['oauth2'];
 oauth2.accessToken = process.env.SQUARE_SB_ACCESS_TOKEN;
 
 // SEO 
@@ -71,13 +71,13 @@ app.use(prerender);
 // payment
 
 app.post('/process-payment', function(req,res,next){
-  var request_params = req.body;
+  let request_params = req.body;
   if (request_params.nonce != '') {
-    var idempotency_key = require('crypto').randomBytes(64).toString('hex');
+    let idempotency_key = require('crypto').randomBytes(64).toString('hex');
 
     // Charge the customer's card
-    var transactions_api = new SquareConnect.TransactionsApi();
-    var request_body = {
+    let transactions_api = new SquareConnect.TransactionsApi();
+    let request_body = {
       card_nonce: request_params.nonce,
       amount_money: {
         amount: 100, // $1.00 charge
