@@ -16,7 +16,9 @@ const stripeElementStyle = {
 class CheckoutForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {complete: false};
+    this.state = {
+        complete: false
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -24,10 +26,11 @@ class CheckoutForm extends Component {
     event.preventDefault();
     this.props.stripe.createToken({name: "Name"})
     .then(token => {
+        const stripeData = {token: token, amount: this.props.amount} 
         fetch("/charge", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(token)
+            body: JSON.stringify(stripeData)
         }).then(function(response){
             if (response.ok) {
                 console.log("Purchase Complete!");

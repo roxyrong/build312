@@ -11,8 +11,9 @@ import Signup from './components/signup';
 import Login from './components/login';
 import MembershipPage from './components/membership_page';
 import MembershipPayment from './components/membership_payment';
-import Payment from './components/payment'
-import DonatePage from './components/donation_page'
+import Payment from './components/payment';
+import DonatePage from './components/donation_page';
+import ProcessDonation from './components/donation_page/process_donation'
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -31,6 +32,7 @@ class App extends React.Component {
               <Route exact path='/membership/payment' component={MembershipPayment} />
               <Route exact path='/payment' component={Payment}/>
               <Route exact path='/donate' component={DonatePage} />
+              <Route exact path='/process-donate' component = {ProcessDonation} />
             </Switch>
           </div>
     

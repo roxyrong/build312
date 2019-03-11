@@ -32,7 +32,7 @@ class Checkout extends React.Component {
                         <div class="col-md-8 px-md-5 order-md-1">
                         <StripeProvider apiKey={this.state.publicKey}>
                             <Elements>
-                                <CheckoutForm />
+                                <CheckoutForm amount={49.99}/>
                             </Elements>
                         </StripeProvider>
                         </div>

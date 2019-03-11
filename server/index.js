@@ -100,12 +100,14 @@ app.post('/process-payment', function(req,res,next){
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
 app.post("/charge", async (req, res) => {
   try {
-    console.log(req);
+    console.log(req.body);
+    const amount = parseInt(req.body.amount, 10) * 1000;
+    const token = req.body.token.token.id;
     let {status} = await stripe.charges.create({
-      amount: 1000,
+      amount: amount,
       currency: "usd",
       description: "An example charge",
-      source: req.body.token.id
+      source: token
     });
     console.log(res.json({status}));
     res.json({status});
