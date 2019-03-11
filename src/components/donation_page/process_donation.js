@@ -34,18 +34,46 @@ class ProcessDonation extends React.Component {
     render() {
         if ((this.state.publicKey !== null) && (this.state.amount !== undefined)) {
             return (
-                <div>
-                    <div class="container" style={styles.container}>
-                        <h1>Thank you for your ${this.state.amount}! You will be charged {this.state.type}.</h1>
-                        <div class="row">
-                            <div class="col-md-8 m-0 p-0">
-                                <StripeProvider apiKey={this.state.publicKey}>
-                                    <Elements>
-                                        <CheckoutForm amount={this.state.amount}/>
-                                    </Elements>
-                                </StripeProvider>
+                <div class="container" style={styles.container}>
+                    <div class="row">
+                        <div class="col-md-8 px-md-5">
+                            <div class="container ">
+                                <h4 class="mb-3">Your donation information </h4>
+                                <p class="mb-3">Thank you for your ${this.state.amount} donation! You will be charged {this.state.type}. </p> 
                             </div>
-                            <div class="col-md-4 m-0 p-0">
+                            <StripeProvider apiKey={this.state.publicKey}>
+                                <Elements>
+                                    <CheckoutForm amount={this.state.amount}/>
+                                </Elements>
+                            </StripeProvider>
+                        </div>
+                        <div class="col-md-4">
+                            <h4 class="mb-3">Questions</h4>
+                            <div id="accordion">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Is this donation tax deductible?
+                                        </button>
+                                    </div>
+                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div class="card-body">
+                                        Build312 is a 501(c)3 tax-exempt organization and your donation is tax-deductible within the guidelines of U.S. law. To claim a donation as a deduction on your U.S. taxes, please keep your email donation receipt as your official record. We'll send it to you upon successful completion of your donation.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                        Do we accept other payment of methods?
+                                        </button>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <div class="card-body">
+                                        We also accept Zelle, Paypal and Venmo. Please email info@build312.co for instructions.
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

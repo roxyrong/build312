@@ -33,7 +33,7 @@ class DonateCard extends React.Component {
         return (
             <div class="card" style={styles.donationCard}>
             <div class="card-body" style={styles.donationCardBody}>
-                <form action="/process-donate" method="GET">
+                <form class="needs-validation" novalidate="" action="/process-donate" method="GET">
                     <div class="btn-group btn-group-toggle" data-toggle="buttons" style={styles.freqBtn}>
                         <label class="btn btn-outline-light active" onFocus={this.freqBtnOnChange}
                                style={this.state.activeBtn === 'once' ? styles.donateBtnActive : styles.donateBtn}>
@@ -47,25 +47,25 @@ class DonateCard extends React.Component {
                     <p>Choose amount to give:</p>
                     <div>
                         <div>
-                            <input type="radio" id="20" name="amount" value="20" onClick={this.disableOthersBtn}/>
+                            <input type="radio" id="20" name="amount" value="20" onClick={this.disableOthersBtn} required=""/>
                             <label for="20" style={styles.amountLabel}>$20</label>
                         </div>
                         <div>
-                            <input type="radio" id="50" name="amount" value="50" onClick={this.disableOthersBtn}/>
+                            <input type="radio" id="50" name="amount" value="50" onClick={this.disableOthersBtn} required=""/>
                             <label for="50" style={styles.amountLabel}>$50</label>
                         </div>
                         <div>
-                            <input type="radio" id="100" name="amount" value="100" onClick={this.disableOthersBtn}/>
+                            <input type="radio" id="100" name="amount" value="100" onClick={this.disableOthersBtn} required=""/>
                             <label for="100" style={styles.amountLabel}>$100</label>
                         </div>
                         <div>
-                            <input type="radio" id="250" name="amount" value="250" onClick={this.disableOthersBtn}/>
+                            <input type="radio" id="250" name="amount" value="250" onClick={this.disableOthersBtn} required=""/>
                             <label for="250" style={styles.amountLabel}>$250</label>
                         </div>
                         <div>
-                            <input type="radio" id="other" name="amount" value="" onClick={this.enableOthersBtn}/>
+                            <input type="radio" id="other" name="amount" value="" onClick={this.enableOthersBtn} required=""/>
                             <label for="other" style={styles.amountLabel}>
-                                <input type="text" name="others" placeholder="Custom amount" disabled={this.state.disable} />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                                <input type="number" name="others" placeholder="Custom amount" disabled={this.state.disable} />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                             ​</label>
                         </div>
                     </div>
