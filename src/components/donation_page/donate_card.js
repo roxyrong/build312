@@ -75,6 +75,6 @@ class DonateCard extends React.Component {
         </div>
         )
     }
-}                            
+}                           
 
 export default DonateCard;
