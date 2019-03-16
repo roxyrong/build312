@@ -18,7 +18,11 @@ class ProcessDonation extends React.Component {
 
     componentWillMount() {
         const parsed = queryString.parse(this.props.location.search);
-        this.setState({amount: parsed.amount})
+        if (parsed.amount) {
+            this.setState({amount: parsed.amount})
+        } else {
+            this.setState({amount: parsed.others})
+        }
         if ('once' in parsed) {
             this.setState({type: "once"});
         } else {
@@ -26,7 +30,6 @@ class ProcessDonation extends React.Component {
         };
         axios.get('/stripe-public-key').then(
             res => {
-                console.log(res.data);
                 this.setState({publicKey: res.data})
             }
         )

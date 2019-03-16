@@ -6,34 +6,52 @@ class DonateCard extends React.Component {
         super();
         this.state = {
             activeBtn: 'once',
-            disable: true
+            isOthersBtnDisable: true,
+            amount: '',
+            others: '',
+            validForm: false
 
         }
         this.freqBtnOnChange = this.freqBtnOnChange.bind(this);
         this.enableOthersBtn = this.enableOthersBtn.bind(this);
         this.disableOthersBtn = this.disableOthersBtn.bind(this);
+        this.handleUserInput = this.handleUserInput.bind(this);
     }
 
-    freqBtnOnChange(event) {
-        event.preventDefault();
+    freqBtnOnChange(e) {
+        e.preventDefault();
         this.setState({
-            activeBtn: event.target.id
+            activeBtn: e.target.id
         });
     }
 
-    disableOthersBtn(event) {
-        this.setState({disable: true});
+    disableOthersBtn(e) {
+        this.setState({isOthersBtnDisable: true, validForm: true});
     }
 
-    enableOthersBtn(event) {
-        this.setState({disable: false});
+    enableOthersBtn(e) {
+        this.setState({isOthersBtnDisable: false});
+        if (this.state.others) {
+            this.setState({validForm: true});
+        } else {
+            this.setState({validForm: false});
+        }
     }
+
+    handleUserInput(e) {
+        const value = e.target.value;
+        if (value && (Math.sign(value) == 1)) {
+            this.setState({validForm: true})
+        } else {
+            this.setState({validForm: false})
+        }
+      }
 
     render() {
         return (
             <div class="card" style={styles.donationCard}>
             <div class="card-body" style={styles.donationCardBody}>
-                <form class="needs-validation" novalidate="" action="/process-donate" method="GET">
+                <form class="needs-validation" novalidate="">
                     <div class="btn-group btn-group-toggle" data-toggle="buttons" style={styles.freqBtn}>
                         <label class="btn btn-outline-light active" onFocus={this.freqBtnOnChange}
                                style={this.state.activeBtn === 'once' ? styles.donateBtnActive : styles.donateBtn}>
@@ -48,28 +66,28 @@ class DonateCard extends React.Component {
                     <div>
                         <div>
                             <input type="radio" id="20" name="amount" value="20" onClick={this.disableOthersBtn} required=""/>
-                            <label for="20" style={styles.amountLabel}>$20</label>
+                            <label for="20" style={styles.amountLabel}>$ 20</label>
                         </div>
                         <div>
                             <input type="radio" id="50" name="amount" value="50" onClick={this.disableOthersBtn} required=""/>
-                            <label for="50" style={styles.amountLabel}>$50</label>
+                            <label for="50" style={styles.amountLabel}>$ 50</label>
                         </div>
                         <div>
                             <input type="radio" id="100" name="amount" value="100" onClick={this.disableOthersBtn} required=""/>
-                            <label for="100" style={styles.amountLabel}>$100</label>
+                            <label for="100" style={styles.amountLabel}>$ 100</label>
                         </div>
                         <div>
                             <input type="radio" id="250" name="amount" value="250" onClick={this.disableOthersBtn} required=""/>
-                            <label for="250" style={styles.amountLabel}>$250</label>
+                            <label for="250" style={styles.amountLabel}>$ 250</label>
                         </div>
                         <div>
                             <input type="radio" id="other" name="amount" value="" onClick={this.enableOthersBtn} required=""/>
                             <label for="other" style={styles.amountLabel}>
-                                <input type="number" name="others" placeholder="Custom amount" disabled={this.state.disable} />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                                $<input type="number" name="others" placeholder="Custom amount" onChange={(event) => this.handleUserInput(event)} disabled={this.state.isOthersBtnDisable} />​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
                             ​</label>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-dark" style={styles.donateSubmitBtn}>Donate</button>
+                    <button type="submit" class="btn btn-dark" disabled={!this.state.validForm} formAction="/process-donate" style={styles.donateSubmitBtn}>Donate</button>
                 </form>
             </div>
         </div>
