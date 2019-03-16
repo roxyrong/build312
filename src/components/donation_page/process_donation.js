@@ -5,6 +5,7 @@ import CheckoutForm from '../membership_page/checkout_form';
 import * as styles from '../../styles/donation_styles';
 const queryString = require('query-string');
 
+
 class ProcessDonation extends React.Component {
     constructor() {
         super();
@@ -12,7 +13,6 @@ class ProcessDonation extends React.Component {
             publicKey: null,
             amount: undefined,
             type: "once"
-
         }
     }
 
@@ -35,18 +35,35 @@ class ProcessDonation extends React.Component {
         )
     }
     render() {
+        const checkoutInfo = (
+        <div class="mb-4">
+            <h4 class="mb-3">Your donation information </h4>
+            <p class="mb-3">Thank you for your ${this.state.amount} donation! You will be charged {this.state.type}. </p> 
+        </div>
+        )
+        const paymentComplete = (
+            <div class="card text-center">
+                <div class="card-header">
+                    <h1>Payment Complete!</h1>
+                </div>
+                <div class="card-body">
+                    <div class="mt-3 mb-5">
+                        <i class="fas fa-check-square fa-5x"></i>
+                    </div>
+                    <div class="mb-3">
+                        <h5 class="card-title">You've donated ${this.state.amount} to Build312. Thank you!</h5>
+                    </div>
+                </div>
+            </div>
+        )
         if ((this.state.publicKey !== null) && (this.state.amount !== undefined)) {
             return (
                 <div class="container" style={styles.container}>
                     <div class="row">
                         <div class="col-md-8 px-md-5">
-                            <div class="container ">
-                                <h4 class="mb-3">Your donation information </h4>
-                                <p class="mb-3">Thank you for your ${this.state.amount} donation! You will be charged {this.state.type}. </p> 
-                            </div>
                             <StripeProvider apiKey={this.state.publicKey}>
                                 <Elements>
-                                    <CheckoutForm amount={this.state.amount}/>
+                                    <CheckoutForm amount={this.state.amount} checkoutInfo={checkoutInfo} paymentComplete={paymentComplete}/>
                                 </Elements>
                             </StripeProvider>
                         </div>

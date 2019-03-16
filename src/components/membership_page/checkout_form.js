@@ -16,6 +16,8 @@ const stripeElementStyle = {
 class CheckoutForm extends Component {
   constructor(props) {
     super(props);
+    this.checkoutInfo = <div></div>
+    this.paymentComplete = <h1>Purchase Complete</h1>;
     this.state = {
         complete: false
     };
@@ -41,9 +43,10 @@ class CheckoutForm extends Component {
   }
 
   render() {
-    if (this.state.complete) return <h1>Purchase Complete</h1>;
+    if (this.state.complete) return (this.props.paymentComplete);
     return (
       <div className="checkout container">
+        {this.props.checkoutInfo}
         <form class="needs-validation" novalidate="">
             <h4 class="mb-3">Billing address</h4>
             <div class="row">
