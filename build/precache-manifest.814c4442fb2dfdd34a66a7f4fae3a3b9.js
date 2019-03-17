@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/static/media/Build312_promo.9a90ea84.mp4"
   },
   {
-    "revision": "eb45327aeaa5f790f31a",
-    "url": "/static/js/main.eb45327a.chunk.js"
+    "revision": "234e2b2a61226855f3ab",
+    "url": "/static/js/main.234e2b2a.chunk.js"
   },
   {
     "revision": "04fdaa69bcd25683d0ac9921fb5a79f1",
@@ -64,7 +64,7 @@ self.__precacheManifest = [
     "url": "/static/css/2.0881e30d.chunk.css"
   },
   {
-    "revision": "5277c69a83c5bac69d5ccd5ab8c5c510",
+    "revision": "156853e8950e85a75e5955d40f04f7a0",
     "url": "/index.html"
   }
 ];
