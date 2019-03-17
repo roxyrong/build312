@@ -5,6 +5,7 @@ import LandingBackground from "../components/landing_page/landing_background"
 import AboutUs from "../components/landing_page/about_us"
 import Events from "../components/landing_page/events"
 import Team from '../components/landing_page/team'
+import Subscribe from '../components/landing_page/subscribe'
 
 
 class LandingPage extends React.Component {
@@ -16,6 +17,7 @@ class LandingPage extends React.Component {
                 <AboutUs />
                 <Events />
                 <Team />
+                <Subscribe />
             </div>
         );
     }

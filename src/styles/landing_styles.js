@@ -155,3 +155,9 @@ export const teamText = {
     padding: "2% 20%", 
     fontWeight: "200"
 }
+
+export const subscribeBtn = {
+    backgroundColor: "#1DCB8B",
+    borderColor: "#1DCB8B",
+    minWidth: "150px"
+}
