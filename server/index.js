@@ -25,7 +25,7 @@ app.use(passport.session());
 
 // routes
 app.get('/event-data-url', (req, res) => {
-  let url = 'https://www.eventbriteapi.com/v3/users/me/owned_events/?token=' + process.env.EVENTBRITE_OAUTH + '&expand=organizer'
+  let url = 'https://www.eventbriteapi.com/v3/users/me/owned_events/?token=' + process.env.EVENTBRITE_OAUTH + '&expand=organizer,venue'
   res.send(url);
 });
 

@@ -93,14 +93,14 @@ export const eventHeader = {
     color: "#1DCB8B",
     fontWeight: "bold",
     marginTop: "50px",
-    paddingLeft: "30%",
-    paddingRight: "30%",
+    paddingLeft: "20%",
+    paddingRight: "20%",
 }
 
 export const eventContent = {
     marginTop: "10px",
-    paddingLeft: "30%",
-    paddingRight: "30%",
+    paddingLeft: "20%",
+    paddingRight: "20%",
 }
 
 export const eventButton = {
