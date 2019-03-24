@@ -20,7 +20,7 @@ const transporter = nodemailer.createTransport({
 
 const send = ({ email, name, subject, text }) => {
   const from = name && email ? `${name} <${email}>` : `${name || email}`
-  const content = text + ' from: ' + name + '(' + email + ')'; 
+  const content = text + '\nfrom: ' + name + '(' + email + ')'; 
   const message = {
     from: from,
     to: client,

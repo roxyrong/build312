@@ -14,5 +14,6 @@ export const submitBtn = {
     backgroundColor: "#1DCB8B",
     borderColor: "#1DCB8B",
     minWidth: "200px",
-    letterSpacing: "1px"
+    letterSpacing: "1px",
+    marginBottom: "25px"
 }

@@ -8,8 +8,6 @@ const session    = require('express-session');
 const mysql      = require('mysql');
 const SquareConnect = require('square-connect');
 const prerender = require('prerender-node');
-const google = require('googleapis');
-const nodemailer = require("nodemailer");
 const util = require('util');
 require('dotenv').config()
 
@@ -71,7 +69,7 @@ prerender.crawlerUserAgents.push('baiduspider');
 app.use(prerender);
 
 // GMail
-const mailer = require('./app/Mailer/gmail') 
+const mailer = require('./app/Mailer/gmail'); 
 require('./app/routes/mailer')(app, mailer);
 
 // payment
