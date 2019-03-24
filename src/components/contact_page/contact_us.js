@@ -11,7 +11,7 @@ class ContactUs extends React.Component {
                         <div class="mb-5">
                             <h3>Contact Us</h3>
                         </div>
-                        <form>
+                        <form action="/contact" method="POST">
                             <div class="row">
                                 <div class="col-md-6 mx-0 mb-3 px-3">
                                     <input type="text" class="form-control border-0" name="name" placeholder="Name" required=""/>
