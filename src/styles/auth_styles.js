@@ -35,7 +35,6 @@ export const signupInput = {
 }
 
 export const signinImage = {
-    marginTop: "75px",
     marginLeft: "15%",
     height: "300px"
 }
