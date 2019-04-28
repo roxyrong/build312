@@ -27,7 +27,6 @@ class Signup extends React.Component {
 
     handleChange(event) {
         const { name, value } = event.target;
-        console.log(name, value);
         const { user } = this.state;
         this.setState({
             user: {
@@ -43,7 +42,8 @@ class Signup extends React.Component {
         this.setState({ submitted: true });
         const { user } = this.state;
         const { dispatch } = this.props;
-        if (user.firstname && user.lastname && user.username && user.password) {
+        console.log('handle submit: ' + user);
+        if (user.firstname && user.lastname && user.email && user.password) {
             dispatch(userActions.register(user));
         }
     }

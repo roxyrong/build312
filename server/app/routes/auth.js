@@ -1,6 +1,6 @@
-const jwt = require('jsonwebtoken');
 const bCrypt = require('bcrypt-nodejs');
-const user = require('../models/user');
+const models = require("../models");
+const User = models.user;
 
 
 module.exports = function(app, passport) {
@@ -18,55 +18,42 @@ module.exports = function(app, passport) {
         });
     });
 
-    app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/dashboard',
-        failureRedirect: '/signup'
-    }, 
-    ));
+    app.post('/signup', (req, res) => {
+        console.log('handle signup post request');
+        let { email, password, firstname, lastname } = req.body;
+        const con = req.app.get('con');
+        con.query(`SELECT * from users where email = '${email}'`, (err, result) => {
+        if (err) {
+            console.log(err);
+            return res.json({ok: false, message: 'Something went wrong with your signup'}); 
+        } else {
+            if (result.length > 0) {
+                console.log('Email is already registered');
+                return res.json({ ok: false, message: 'Email is already registred' });
+            } else {
+            const userPassword = generateHash(password);
 
-    // app.post('/signup', async (req, res) => {
-    //     let { email, password, firstname, lastname } = req.body;
-    //     const con = req.app.get('con');
-    //     con.query(`SELECT * from users where email = '${email}'`, (err, result) => {
-    //     if (err) {
-    //         return res.json({ status: 'error', msg: 'Error occured' + err });
-    //     } else {
-    //         if (result.length > 0) {
-    //         return res.json({ status: 'error', msg: 'Email is already registred' });
-    //         } else {
-    //         const hashedPass = generateHash(password);
-    //         var signUpObj = {
-    //             email: email,
-    //             password: hashedPass,
-    //             firstname: firstname,
-    //             lastname: lastname
-    //         };
-    //         User.create(signUpObj).then((newUser, created) => {
-    //             if (!newUser) {
-    //             return res.json({ status: 'error', msg: 'Error occured' });
-    //             }
-    //             if (newUser) {
-    //             const payload = {
-    //                 email: email,
-    //                 phone: phone,
-    //                 firstname: firstname,
-    //                 lastname: lastname
-    //             };
-    //             jwt.sign(payload, process.env.EXPRESS_SECRET, { expiresIn: 5184000 }, (err, token) => {
-    //                 res.json({
-    //                 status: 'ok',
-    //                 msg: 'auth successful',
-    //                 data: {
-    //                     token: 'Bearer ' + token
-    //                 }
-    //                 });
-    //             });
-    //             }
-    //         });
-    //         }
-    //     }
-    //     });
-    // })
+            var data =
+            {
+                email: email,
+                password: userPassword,
+                firstname: firstname,
+                lastname: lastname
+            };
+
+            User.create(data).then(function(newUser, created) {
+                if (!newUser) {
+                    console.log('Your signup is not successful.');
+                    return res.json({ok: false, message: 'Your signup is not successful.'});  
+                } else {
+                    console.log('Your signup is successful.');
+                    return res.json({ok: true, message: 'Your signup is successful', data: {user: newUser}});
+                } 
+            });
+
+        }};
+    })
+});
 
     app.post('/login', (req, res) => {
         const { email, password } = req.body;

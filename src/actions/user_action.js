@@ -40,6 +40,8 @@ function logout() {
 }
 
 function register(user) {
+    console.log('user action ');
+    console.log(user);
     return dispatch => {
         dispatch(request(user));
 
