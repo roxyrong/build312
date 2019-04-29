@@ -11,7 +11,8 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const loggerMiddleware = createLogger();
-const store = createStore(reducers, applyMiddleware(thunk, loggerMiddleware));
+const store = createStore(reducers, applyMiddleware(thunk));
+// const store = createStore(reducers, applyMiddleware(thunk, loggerMiddleware));
 
 ReactDOM.render(
   <BrowserRouter>

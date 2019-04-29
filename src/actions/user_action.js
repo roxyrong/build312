@@ -12,7 +12,6 @@ export const userActions = {
 };
 
 export function login(email, password) {
-    console.log('user action login');
     return dispatch => {
         dispatch(request({ email }));
 
@@ -20,7 +19,7 @@ export function login(email, password) {
             .then(
                 user => { 
                     dispatch(success(user));
-                    history.push('/dashboard');
+                    history.push('/dashboard', {user: user});
                 },
                 error => {
                     dispatch(failure(error.toString()));
@@ -40,8 +39,6 @@ function logout() {
 }
 
 function register(user) {
-    console.log('user action ');
-    console.log(user);
     return dispatch => {
         dispatch(request(user));
 

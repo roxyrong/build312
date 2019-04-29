@@ -1,7 +1,5 @@
 import { authHeader } from '../helpers/auth_header';
 
-// const baseUrl = 'http://localhost:3000';
-
 export const userService = {
     login,
     logout,
@@ -82,7 +80,6 @@ function _delete(id) {
 }
 
 function handleResponse(response) {
-    console.log('handle response');
     return response.text().then(text => {
         const data = text && JSON.parse(text);
         if (!response.ok) {
@@ -96,7 +93,6 @@ function handleResponse(response) {
             if (!data.ok) {
                 return Promise.reject(data.message);
             } else {
-                console.log(data)
                 return data.data;
             }
         }

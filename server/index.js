@@ -48,22 +48,6 @@ models.sequelize.sync().then(function() {
   console.log(err, "Something went wrong with the Database Update!")
 });
 
-const con = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME
-});
-
-con.connect(err => {
-  if (err) {
-    console.log(err);
-  } else {
-    app.set('con', con);
-    console.log('%s database %s connected successfully', process.env.DB_NAME);
-  }
-});
-
 // auth
 require('./app/routes/auth')(app, passport);
 require('./app/config/passportLocal')(passport, models.user);

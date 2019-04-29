@@ -19,15 +19,14 @@ module.exports = function(app, passport) {
     });
 
     app.post('/signup', (req, res) => {
-        console.log('handle signup post request');
         let { email, password, firstname, lastname } = req.body;
-        const con = req.app.get('con');
-        con.query(`SELECT * from users where email = '${email}'`, (err, result) => {
-        if (err) {
-            console.log(err);
-            return res.json({ok: false, message: 'Something went wrong with your signup'}); 
-        } else {
-            if (result.length > 0) {
+
+        User.findOne({
+            where: {
+                email: email
+            }
+        }).then(function(user) {
+            if (user) {
                 console.log('Email is already registered');
                 return res.json({ ok: false, message: 'Email is already registred' });
             } else {
@@ -51,30 +50,36 @@ module.exports = function(app, passport) {
                 } 
             });
 
-        }};
-    })
+        }}).catch(err => {
+            console.log(err);
+            return res.json({ok: false, message: 'Something went wrong with your signup'}); 
+        })
 });
 
     app.post('/login', (req, res) => {
         const { email, password } = req.body;
-        const con = req.app.get('con');
-        con.query(`SELECT * from users where email = '${email}'`, (err, result) => {
-            if (err) {
-                console.log("Error:", err);    
-                return res.json({ok: false, message: 'Something went wrong with your Login'}); 
+        
+        User.findOne({
+            where: {
+                email: email
+            }
+        }).then(function(user) {  
+            if (!user) {
+                console.log('Email does not exist');
+                return res.json({ok: false, message: 'Email does not exist'}); 
             } else {
-                if (result.length === 0) {
-                    return res.json({ok: false, message: 'Email does not exist'}); 
+                const DbPassword = user.password;
+                if (!isValidPassword(DbPassword, password)) {
+                    console.log('incorrect password');
+                    return res.json({ok: false, message: 'Incorrect password.'});  
                 } else {
-                    const DbPassword = result[0].password;
-                    if (!isValidPassword(DbPassword, password)) {
-                        console.log('incorrect password');
-                        return res.json({ok: false, message: 'Incorrect password.'});  
-                    } else {
-                        return res.json({ok: true, message: 'Login Successful.', data: {user: result[0]}});  
-                    }
+                    console.log('login successful');
+                    return res.json({ok: true, message: 'Login Successful.', data: {user: user}});  
                 }
             }
+        }).catch(err => {
+            console.log("Error:", err);    
+            return res.json({ok: false, message: 'Something went wrong with your Login'}); 
         })
     });
 
