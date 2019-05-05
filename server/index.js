@@ -54,6 +54,7 @@ require('./app/config/passportLocal')(passport, models.user);
 require('./app/config/passportLinkedIn')(passport, models.user);
 require('./app/config/passportFacebook')(passport, models.user);
 require('./app/config/passportGoogle')(passport, models.user);
+// require('./app/config/passportJwt')(passport, con);
 
 const defaultClient = SquareConnect.ApiClient.instance;
 let oauth2 = defaultClient.authentications['oauth2'];

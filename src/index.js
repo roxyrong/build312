@@ -1,46 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter} from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
-import LandingPage from "./components/landing_page";
-import EventPage from './components/event_page';
-import Signup from './components/signup';
-import Login from './components/login';
-import MembershipPage from './components/membership_page';
-import MembershipPayment from './components/membership_payment';
-import Payment from './components/payment';
-import DonatePage from './components/donation_page';
-import ProcessDonationPage from './components/process_donation_page';
-import ContactPage from './components/contact_page'
+import App from './app';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const loggerMiddleware = createLogger();
 const store = createStore(reducers, applyMiddleware(thunk));
-
-class App extends React.Component {
-    render() {
-        return (
-          <div>
-            <Switch>
-              <Route exact path='/' component={LandingPage}/>
-              <Route exact path='/event' component={EventPage}/>
-              <Route exact path='/signup' component={Signup}/>
-              <Route exact path='/login' component={Login}/>
-              <Route exact path='/membership' component={MembershipPage}/>
-              <Route exact path='/membership/payment' component={MembershipPayment} />
-              <Route exact path='/payment' component={Payment}/>
-              <Route exact path='/donate' component={DonatePage} />
-              <Route exact path='/process-donate' component = {ProcessDonationPage} />
-              <Route exact path='/contact' component = {ContactPage} />
-            </Switch>
-          </div>
-    
-        );
-      }
-}
+// const store = createStore(reducers, applyMiddleware(thunk, loggerMiddleware));
 
 ReactDOM.render(
   <BrowserRouter>
