@@ -20,9 +20,8 @@ function login(email, password) {
     return fetch(`/login`, requestOptions)
         .then(handleResponse)
         .then(user => {
-            console.log(user);
             localStorage.setItem('user', JSON.stringify(user));
-            return user;
+            return user.user;
         })
 }
 

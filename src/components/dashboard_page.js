@@ -1,11 +1,18 @@
 import React from "react";
+import { connect } from 'react-redux';
 import * as appStyles from "../styles/app_styles";
 import NavBar from "./navbar";
 import * as styles from '../styles/dashboard_styles';
 
 
 class DashboardPage extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
+        const { user } = this.props;
+        console.log(user);
         return (
             <div className="App" style={appStyles.appStyle}>
                 <NavBar />
@@ -34,9 +41,9 @@ class DashboardPage extends React.Component {
                                     <div class="row">
                                         <div class="col-md-6">
                                             <h6>Name</h6>
-                                            <p>Roxy Rong</p>
+                                            <p>{user.firstname + " " + user.lastname}</p>
                                             <h6>Email</h6>
-                                            <p>rongxinyun2010@gmail.com</p>
+                                            <p>{user.email}</p>
                                             <h6>Title</h6>
                                             <p>Trader @ PEAK6 Investments</p>
                                         </div>
@@ -191,4 +198,11 @@ class DashboardPage extends React.Component {
     }
 }
 
-export default DashboardPage;
+function mapStateToProps(state) {
+    const { user } = state.authentication;
+    return {
+        user
+    };
+}
+
+export default connect(mapStateToProps)(DashboardPage);
