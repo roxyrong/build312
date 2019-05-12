@@ -1,5 +1,7 @@
 const express    = require('express');
-const app = express();
+const app        = express();
+// const cors       = require('cors')
+const request    = require('request');
 const path       = require('path');
 const bodyParser = require('body-parser');
 const favicon    = require('express-favicon');
@@ -9,10 +11,12 @@ const mysql      = require('mysql');
 const SquareConnect = require('square-connect');
 const prerender = require('prerender-node');
 const util = require('util');
+const md5 = require('md5');
 require('dotenv').config()
 
 // express
 const PORT = process.env.PORT || 3000;
+// app.use(cors());
 app.use(express.static(path.join(__dirname, '..', 'build/')));
 app.use(favicon(path.join(__dirname, '..', 'public/', 'favicon.png')));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,8 +29,47 @@ app.use(passport.session());
 
 // routes
 app.get('/event-data-url', (req, res) => {
-  let url = 'https://www.eventbriteapi.com/v3/users/me/owned_events/?token=' + process.env.EVENTBRITE_OAUTH + '&expand=organizer,venue'
+  const url = 'https://www.eventbriteapi.com/v3/users/me/owned_events/?token=' + process.env.EVENTBRITE_OAUTH + '&expand=organizer,venue'
   res.send(url);
+});
+
+app.get('/mailchimp-member-in-list', (req, res) => {
+  const email = md5(req.query.email);
+  const url = 'https://us20.api.mailchimp.com/3.0/lists/' + process.env.MAILCHIMP_LIST_ID +'/members/' + email + '?apikey=' + process.env.MAILCHIMP_API;
+  request(url, function (error, response, body) {
+  if (error) {
+    console.log(error);
+  } else {
+    res.send(body);
+  } 
+});
+})
+
+app.get('/mailchimp-add-subscriber', (req, res) =>{
+  const email = req.query.email;
+  const firstname = req.query.firstname;
+  const lastname = req.query.lastname;
+  const url = 'https://us20.api.mailchimp.com/3.0/lists/' + process.env.MAILCHIMP_LIST_ID +'/members';
+  request.post({
+    headers: {'content-type' : 'application/json',
+    'Authorization': 'apikey ' + process.env.MAILCHIMP_API},
+    url:     url,
+    body: {
+      "email_address": email,
+      "status": "subscribed",
+      "merge_fields": {
+          "FNAME": firstname,
+          "LNAME": lastname
+      }
+  },
+  json: true
+  }, function(error, response, body){
+    if (error) {
+      res.send('error');
+    } else {
+      res.send('ok');
+    }
+  });
 });
 
 app.get('/sq-payment-cred', (req, res) => {
