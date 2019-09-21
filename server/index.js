@@ -8,7 +8,6 @@ const favicon    = require('express-favicon');
 const passport   = require('passport');
 const session    = require('express-session');
 const mysql      = require('mysql');
-const SquareConnect = require('square-connect');
 const prerender = require('prerender-node');
 const util = require('util');
 const md5 = require('md5');
@@ -72,11 +71,6 @@ app.get('/mailchimp-add-subscriber', (req, res) =>{
   });
 });
 
-app.get('/sq-payment-cred', (req, res) => {
-  let sqCred = {'applicationId': process.env.SQUARE_SB_APPLICATION_ID, 
-              'locationId' : process.env.SQUARE_SB_LOCATION_ID}
-  res.send(sqCred)
-})
 
 app.get('/stripe-public-key', (req, res) => {
   res.send(process.env.STRIPE_PUBLIC_KEY)
@@ -99,9 +93,6 @@ require('./app/config/passportFacebook')(passport, models.user);
 require('./app/config/passportGoogle')(passport, models.user);
 // require('./app/config/passportJwt')(passport, con);
 
-const defaultClient = SquareConnect.ApiClient.instance;
-let oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = process.env.SQUARE_SB_ACCESS_TOKEN;
 
 // SEO 
 prerender.set('prerenderToken', process.env.PRERENDER_TOKEN)
@@ -118,38 +109,11 @@ require('./app/routes/mailer')(app, mailer);
 
 // payment
 
-app.post('/process-payment', function(req,res,next){
-  let request_params = req.body;
-  if (request_params.nonce != '') {
-    let idempotency_key = require('crypto').randomBytes(64).toString('hex');
-
-    // Charge the customer's card
-    let transactions_api = new SquareConnect.TransactionsApi();
-    let request_body = {
-      card_nonce: request_params.nonce,
-      amount_money: {
-        amount: 100, // $1.00 charge
-        currency: 'USD'
-      },
-      idempotency_key: idempotency_key
-    };
-    transactions_api.charge(process.env.SQUARE_SB_LOCATION_ID, request_body).then(function(data) {
-      console.log(util.inspect(data, false, null));
-      res.send('Payment Successful')
-    }, function(error) {
-      console.log(util.inspect(error.status, false, null));
-      res.send('Payment Failed')
-    });
-  } else {
-    console.log('invalid nonce');
-  }
-});
-
 const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
 app.post("/charge", async (req, res) => {
   try {
     console.log(req.body);
-    const amount = parseInt(req.body.amount, 10) * 1000;
+    const amount = parseInt(req.body.amount, 10) * 100;
     const token = req.body.token.token.id;
     let {status} = await stripe.charges.create({
       amount: amount,

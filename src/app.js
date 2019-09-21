@@ -8,7 +8,6 @@ import Signup from './components/signup';
 import Login from './components/login';
 import MembershipPage from './components/membership_page';
 import MembershipPayment from './components/membership_payment';
-import Payment from './components/payment';
 import DonatePage from './components/donation_page';
 import ProcessDonationPage from './components/process_donation_page';
 import ContactPage from './components/contact_page'
@@ -40,7 +39,6 @@ class App extends React.Component {
               <Route exact path='/login' component={Login}/>
               <Route exact path='/membership' component={MembershipPage}/>
               <Route exact path='/membership/payment' component={MembershipPayment} />
-              <Route exact path='/payment' component={Payment}/>
               <Route exact path='/donate' component={DonatePage} />
               <Route exact path='/process-donate' component = {ProcessDonationPage} />
               <Route exact path='/contact' component = {ContactPage} />
