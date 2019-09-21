@@ -1,5 +1,4 @@
 import React from "react";
-import axios from 'axios';
 import * as styles from "../../styles/event_styles";
 import { getEventbriteData } from '../../actions/eventbrite';
 import { connect } from 'react-redux';
@@ -14,6 +13,7 @@ class Events extends React.Component {
     render() {
         let pastEvents = [];
         let upcomingEvents = [];
+        let upcomingEventsTitle;
         if (this.props.eventbriteData !== null) {
             let events = this.props.eventbriteData.events;
             let today = new Date();
@@ -42,11 +42,16 @@ class Events extends React.Component {
                     pastEvents.push(eventHTML)
                 };
                 return
-            })
+            });
+            if (upcomingEvents.length == 0) {
+                upcomingEventsTitle = "";
+            } else {
+                upcomingEventsTitle =  <h3>Upcoming Events</h3>;
+            };
         } 
         return (
             <div class="container" style={styles.eventContainer} >
-                <h3>Upcoming Events</h3>
+                {upcomingEventsTitle}
                 <div class="card-deck" style={styles.cardDeck}>
                     {upcomingEvents}
                 </div>
