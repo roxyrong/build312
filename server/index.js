@@ -8,7 +8,6 @@ const favicon    = require('express-favicon');
 const passport   = require('passport');
 const session    = require('express-session');
 const mysql      = require('mysql');
-const SquareConnect = require('square-connect');
 const prerender = require('prerender-node');
 const util = require('util');
 const md5 = require('md5');
@@ -94,9 +93,6 @@ require('./app/config/passportFacebook')(passport, models.user);
 require('./app/config/passportGoogle')(passport, models.user);
 // require('./app/config/passportJwt')(passport, con);
 
-const defaultClient = SquareConnect.ApiClient.instance;
-let oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = process.env.SQUARE_SB_ACCESS_TOKEN;
 
 // SEO 
 prerender.set('prerenderToken', process.env.PRERENDER_TOKEN)
