@@ -28,7 +28,7 @@ class CheckoutForm extends Component {
     event.preventDefault();
     this.props.stripe.createToken({name: "Name"})
     .then(token => {
-        const stripeData = {token: token, amount: this.props.amount} 
+        const stripeData = {token: token, amount: this.props.amount};
         fetch("/charge", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
