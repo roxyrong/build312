@@ -35,36 +35,37 @@ class Events extends React.Component {
         }
         return (
             <div className="row">
-                <div className="col-md-4" style={styles.eventLeft}>
-                <h4 className="text-center" style={styles.eventTitle}>{firstEvent.name}</h4>
-                <p style={styles.eventHeader}>Time</p>
-                <p style={styles.eventContent}>{firstEvent.time}</p>
-                <p style={styles.eventHeader}>Location</p>
-                <p style={styles.eventContent}>{firstEvent.address}</p>
-                <p style={styles.eventContent}>{firstEvent.city}</p>
-                <form method="GET" action={firstEvent.url}>
-                    <button type="submit" className="btn btn-lg btn-primary" style={styles.eventButton}>RSVP</button>
-                </form>
-                </div>
                 <div className="col-md-4" style={styles.eventMiddle}>
-                <div style={styles.eventLineBreak}></div>
-                <h1 style={styles.eventMiddleText1}>FORUMS</h1>
-                <h1 style={styles.eventMiddleText2}>& EVENTS </h1>
-                <div style={styles.eventLineBreak}></div>
-                <form method="GET" action="/event">
-                    <button type="submit" className="btn" style={styles.eventButtonMiddle} >SEE ALL ></button>
-                </form>
+                    <div style={styles.eventLineBreak}></div>
+                        <h1 style={styles.eventMiddleText1}>FORUMS</h1>
+                        <h1 style={styles.eventMiddleText2}>& EVENTS </h1>
+                    <div style={styles.eventLineBreak}></div>
+                    <form method="GET" action="/event">
+                        <button type="submit" className="btn" style={styles.eventButtonMiddle} >SEE ALL ></button>
+                    </form>
                 </div>
+                <div className="col-md-4" style={styles.eventLeft}>
+                    <h4 className="text-center" style={styles.eventTitle}>{firstEvent.name}</h4>
+                    <p style={styles.eventHeader}>Time</p>
+                    <p style={styles.eventContent}>{firstEvent.time}</p>
+                    <p style={styles.eventHeader}>Location</p>
+                    <p style={styles.eventContent}>{firstEvent.address}</p>
+                    <p style={styles.eventContent}>{firstEvent.city}</p>
+                    <form method="GET" action={firstEvent.url}>
+                        <button type="submit" className="btn btn-lg btn-primary" style={styles.eventButton}>RSVP</button>
+                    </form>
+                </div>
+
                 <div className="col-md-4" style={styles.eventRight}>
-                <h4 className="text-center" style={styles.eventTitle}>{secondEvent.name}</h4>
-                <p style={styles.eventHeader}>Time</p>
-                <p style={styles.eventContent}>{secondEvent.time}</p>
-                <p style={styles.eventHeader}>Location</p>
-                <p style={styles.eventContent}>{secondEvent.address}</p>
-                <p style={styles.eventContent}>{secondEvent.city}</p>
-                <form method="GET" action={secondEvent.url}>
-                    <button type="submit" className="bt btn-lg btn-primary"formaction={secondEvent.url} style={styles.eventButton}>RSVP</button>
-                </form>
+                    <h4 className="text-center" style={styles.eventTitle}>{secondEvent.name}</h4>
+                    <p style={styles.eventHeader}>Time</p>
+                    <p style={styles.eventContent}>{secondEvent.time}</p>
+                    <p style={styles.eventHeader}>Location</p>
+                    <p style={styles.eventContent}>{secondEvent.address}</p>
+                    <p style={styles.eventContent}>{secondEvent.city}</p>
+                    <form method="GET" action={secondEvent.url}>
+                        <button type="submit" className="bt btn-lg btn-primary"formaction={secondEvent.url} style={styles.eventButton}>RSVP</button>
+                    </form>
                 </div>
             </div>
         );
