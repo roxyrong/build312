@@ -3,6 +3,7 @@ import * as styles from "../../styles/membership_styles"
 import bg from '../../assets/membership_bg.png';
 import mobile_bg from '../../assets/membership_bg_mobile.png';
 import MediaQuery from 'react-responsive';
+import Subscribe from '../../components/landing_page/subscribe';
 
 
 class Membership extends React.Component {
@@ -25,7 +26,7 @@ class Membership extends React.Component {
                         <img src={bg} alt="membership bg" style={styles.bg}/>
                     </MediaQuery>
                 </div>
-                <div className="d-flex m-0 p-0 flex-column align-items-center">
+                <div className="d-flex mt-0 mb-4 p-0 flex-column align-items-center">
                     <h2 style={styles.benefitHeader}>Benefits</h2>
                     <h4 style={styles.benefitSubHeader}>Events</h4>
                     <p style={styles.benefitItem}>Complimentary access to Build312 monthly panel discussion for you and your guest</p>
@@ -39,6 +40,7 @@ class Membership extends React.Component {
                     <p style={styles.benefitItem}>One complimentary Coworking Day each month at CoGen</p>
                     <p style={styles.benefitItem}>Opportunities to get involved in event coordination</p>
                 </div>
+                <Subscribe />
             </div>
         );
 
