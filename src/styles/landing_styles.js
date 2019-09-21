@@ -76,7 +76,7 @@ export const eventLeft = {
 }
 
 export const eventMiddle = {
-    backgroundColor: "black",
+    backgroundColor: "#333",
     height: "600px",
 }
 
@@ -138,7 +138,7 @@ export const eventButtonMiddle = {
     marginLeft: "30%",
     marginRight: "30%",
     color: "white",
-    backgroundColor: "black",
+    backgroundColor: "#333",
     marginTop: "20px"
 }
 
