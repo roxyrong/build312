@@ -3,6 +3,7 @@ import axios from "axios";
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from '../membership_page/checkout_form';
 import * as styles from '../../styles/donation_styles';
+import donationPic from '../../assets/thank_you_donation.PNG';
 const queryString = require('query-string');
 
 
@@ -42,13 +43,13 @@ class ProcessDonation extends React.Component {
         </div>
         )
         const paymentComplete = (
-            <div class="card text-center">
+            <div class="card text-center mb-4">
                 <div class="card-header">
                     <h1>Payment Complete!</h1>
                 </div>
                 <div class="card-body">
                     <div class="mt-3 mb-5">
-                        <i class="fas fa-check-square fa-5x"></i>
+                        <img src={donationPic} />
                     </div>
                     <div class="mb-3">
                         <h5 class="card-title">You've donated ${this.state.amount} to Build312. Thank you!</h5>
