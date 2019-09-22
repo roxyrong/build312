@@ -24,19 +24,6 @@ export const freqBtn = {
     marginBottom: "25px"
 }
 
-export const donateBtn = {
-    minWidth: "125px",
-    borderColor: "#1DCB8B",
-    color: "#1DCB8B"
-}
-
-export const donateBtnActive = {
-    minWidth: "125px",
-    borderColor: "#1DCB8B",
-    backgroundColor: "#1DCB8B",
-    color: "#FFF"
-}
-
 export const amountLabel = {
     marginLeft: "10px"
 }

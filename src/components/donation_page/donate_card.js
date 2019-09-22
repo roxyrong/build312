@@ -12,17 +12,9 @@ class DonateCard extends React.Component {
             validForm: false
 
         }
-        this.freqBtnOnChange = this.freqBtnOnChange.bind(this);
         this.enableOthersBtn = this.enableOthersBtn.bind(this);
         this.disableOthersBtn = this.disableOthersBtn.bind(this);
         this.handleUserInput = this.handleUserInput.bind(this);
-    }
-
-    freqBtnOnChange(e) {
-        e.preventDefault();
-        this.setState({
-            activeBtn: e.target.id
-        });
     }
 
     disableOthersBtn(e) {
@@ -52,17 +44,7 @@ class DonateCard extends React.Component {
             <div class="card" style={styles.donationCard}>
             <div class="card-body" style={styles.donationCardBody}>
                 <form class="needs-validation" novalidate="">
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons" style={styles.freqBtn}>
-                        <label class="btn btn-outline-light active" onFocus={this.freqBtnOnChange}
-                               style={this.state.activeBtn === 'once' ? styles.donateBtnActive : styles.donateBtn}>
-                            <input type="radio" name="once" id="once" checked={this.state.activeBtn === 'once'}/> Once
-                        </label>
-                        <label class="btn btn-outline-light" onFocus={this.freqBtnOnChange}
-                               style={this.state.activeBtn === 'monthly' ? styles.donateBtnActive : styles.donateBtn} >
-                            <input type="radio" name="monthly" id="monthly" checked={this.state.activeBtn === 'monthly'} /> Monthly
-                        </label>
-                    </div>
-                    <p>Choose amount to give:</p>
+                    <h5 class='mt-3 mb-4'>Choose amount to give</h5>
                     <div>
                         <div>
                             <input type="radio" id="25" name="amount" value="25" onClick={this.disableOthersBtn} required=""/>
