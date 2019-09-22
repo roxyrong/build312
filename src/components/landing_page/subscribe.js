@@ -8,7 +8,8 @@ class Subscribe extends React.Component {
         this.state = {
             firstname: '',
             lastname: '',
-            email: ''
+            email: '',
+            validForm: false
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubscribe = this.handleSubscribe.bind(this);
@@ -17,6 +18,12 @@ class Subscribe extends React.Component {
     handleChange(event) {
         const { name, value } = event.target;
         this.setState({[name]: value});
+
+        if ((this.state.firstname) && (this.state.lastname) && ((this.state.email).match(/.+@.+/))){
+            this.setState({validForm: true});
+        } else {
+            this.setState({validForm: false});
+        };
     }
  
     handleSubscribe(event) {
@@ -58,8 +65,8 @@ class Subscribe extends React.Component {
                         <form class="form-inline col-ld-9 mx-0" onSubmit={this.handleSubscribe}>
                             <input type="text" class="bg-light form-control col-lg-2 col-md-6 m-2" name="firstname" placeholder="First Name" value={this.state.firstname} onChange={this.handleChange}/>
                             <input type="text" class="bg-light form-control col-lg-2 col-md-6 m-2" name="lastname" placeholder="Last Name" value={this.state.lastname} onChange={this.handleChange}/>
-                            <input type="text" class="bg-light form-control col-lg-4 col-md-6 m-2" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange}/>
-                            <button type="submit" class="btn btn-large btn-primary col-lg-2 col-md-6 m-2" style={styles.subscribeBtn} name="subscribe">Subscribe</button>
+                            <input type="email" class="bg-light form-control col-lg-4 col-md-6 m-2" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange}/>
+                            <button type="submit" class="btn btn-large btn-primary col-lg-2 col-md-6 m-2" disabled={!this.state.validForm} style={styles.subscribeBtn} name="subscribe">Subscribe</button>
                         </form>
                         </div>
                 </div>
