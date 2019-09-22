@@ -9,7 +9,8 @@ class Subscribe extends React.Component {
             firstname: '',
             lastname: '',
             email: '',
-            validForm: false
+            validForm: false,
+            subscribeSuccess: false
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubscribe = this.handleSubscribe.bind(this);
@@ -36,7 +37,7 @@ class Subscribe extends React.Component {
             })
             .then(res => {
                 if (res.data.status !== 200) {
-                    alert('subscribed successful.');
+                    alert('subscribed unsuccessful.');
                 } else {
                     axios.get('/mailchimp-add-subscriber', {
                         params:{
@@ -63,12 +64,13 @@ class Subscribe extends React.Component {
                             <small>Get the latest events, updates and more.</small>
                         </div>
                         <form class="form-inline col-ld-9 mx-0" onSubmit={this.handleSubscribe}>
-                            <input type="text" class="bg-light form-control col-lg-2 col-md-6 m-2" name="firstname" placeholder="First Name" value={this.state.firstname} onChange={this.handleChange}/>
-                            <input type="text" class="bg-light form-control col-lg-2 col-md-6 m-2" name="lastname" placeholder="Last Name" value={this.state.lastname} onChange={this.handleChange}/>
-                            <input type="email" class="bg-light form-control col-lg-4 col-md-6 m-2" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange}/>
+                            <input type="text" class="bg-light form-control col-lg-2 col-md-6 m-2" name="firstname" placeholder="First Name" value={this.state.firstname} onChange={this.handleChange} onKeyUp={this.handleChange}/>
+                            <input type="text" class="bg-light form-control col-lg-2 col-md-6 m-2" name="lastname" placeholder="Last Name" value={this.state.lastname} onChange={this.handleChange} onKeyUp={this.handleChange}/>
+                            <input type="email" class="bg-light form-control col-lg-4 col-md-6 m-2" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange} onKeyUp={this.handleChange}/>
                             <button type="submit" class="btn btn-large btn-primary col-lg-2 col-md-6 m-2" disabled={!this.state.validForm} style={styles.subscribeBtn} name="subscribe">Subscribe</button>
                         </form>
                         </div>
+                        <div></div>
                 </div>
             </div>
         );
