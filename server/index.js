@@ -44,7 +44,7 @@ app.get('/mailchimp-member-in-list', (req, res) => {
 });
 })
 
-app.get('/mailchimp-add-subscriber', (req, res) =>{
+app.get('/mailchimp-add-subscriber', (req, res) => {
   const email = req.query.email;
   const firstname = req.query.firstname;
   const lastname = req.query.lastname;
@@ -64,9 +64,13 @@ app.get('/mailchimp-add-subscriber', (req, res) =>{
   json: true
   }, function(error, response, body){
     if (error) {
-      res.send('error');
+      res.send(error);
     } else {
-      res.send('ok');
+      if (body.status === 200) {
+        res.send('ok');
+      } else {
+        res.send(body.detail);
+      }
     }
   });
 });

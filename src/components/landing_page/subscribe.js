@@ -10,13 +10,14 @@ class Subscribe extends React.Component {
             lastname: '',
             email: '',
             validForm: false,
-            subscribeSuccess: false
+            subscribeText: ''
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubscribe = this.handleSubscribe.bind(this);
     }
 
     handleChange(event) {
+        this.setState({subscribeText: ''});
         const { name, value } = event.target;
         this.setState({[name]: value});
 
@@ -36,8 +37,8 @@ class Subscribe extends React.Component {
                 params: {email: email}
             })
             .then(res => {
-                if (res.data.status !== 200) {
-                    alert('subscribed unsuccessful.');
+                if (res.data.status === 'subscribed') {
+                    this.setState({subscribeText: 'Success!'});
                 } else {
                     axios.get('/mailchimp-add-subscriber', {
                         params:{
@@ -46,8 +47,11 @@ class Subscribe extends React.Component {
                             lastname: lastname
                         }
                     }).then(res => {
-                        if (res.status === 200 & res.data === 'ok')
-                        alert('subscribed successful.');
+                        if ((res.status === 200) & (res.data === 'ok')) {
+                            this.setState({subscribeText: 'Success!'});
+                        } else {
+                            this.setState({subscribeText: 'Error!'});
+                        }
                     })
                 }
             })
@@ -63,14 +67,15 @@ class Subscribe extends React.Component {
                             <h5>Join our Community</h5>
                             <small>Get the latest events, updates and more.</small>
                         </div>
-                        <form class="form-inline col-ld-9 mx-0" onSubmit={this.handleSubscribe}>
-                            <input type="text" class="bg-light form-control col-lg-2 col-md-6 m-2" name="firstname" placeholder="First Name" value={this.state.firstname} onChange={this.handleChange} onKeyUp={this.handleChange}/>
-                            <input type="text" class="bg-light form-control col-lg-2 col-md-6 m-2" name="lastname" placeholder="Last Name" value={this.state.lastname} onChange={this.handleChange} onKeyUp={this.handleChange}/>
-                            <input type="email" class="bg-light form-control col-lg-4 col-md-6 m-2" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange} onKeyUp={this.handleChange}/>
-                            <button type="submit" class="btn btn-large btn-primary col-lg-2 col-md-6 m-2" disabled={!this.state.validForm} style={styles.subscribeBtn} name="subscribe">Subscribe</button>
-                        </form>
+                        <div class="mx-0"></div>
+                            <form class="form-inline col-lg-9 mx-0" onSubmit={this.handleSubscribe}>
+                                <input type="text" class="bg-light form-control col-lg-2 col-md-6 m-2" name="firstname" placeholder="First Name" value={this.state.firstname} onChange={this.handleChange} onKeyUp={this.handleChange}/>
+                                <input type="text" class="bg-light form-control col-lg-2 col-md-6 m-2" name="lastname" placeholder="Last Name" value={this.state.lastname} onChange={this.handleChange} onKeyUp={this.handleChange}/>
+                                <input type="email" class="bg-light form-control col-lg-4 col-md-6 m-2" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange} onKeyUp={this.handleChange}/>
+                                <button type="submit" class="btn btn-large btn-primary col-lg-2 col-md-6 m-2 mr-0" disabled={!this.state.validForm} style={styles.subscribeBtn} name="subscribe">Subscribe</button>
+                            </form>
+                            <div class='mx-0'>{this.state.subscribeText}</div>
                         </div>
-                        <div></div>
                 </div>
             </div>
         );
