@@ -1,6 +1,6 @@
 import React from "react";
 import { Document, Page, pdfjs } from 'react-pdf';
-import privacy_policy from '../../assets/privacy_policy.pdf';
+import PrivacyPolicyDocument from '../../assets/privacy_policy.pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 
 
@@ -47,7 +47,7 @@ class PrivacyPolicy extends React.Component {
             <div class="container">
                 <div class="row justify-content-center">
                     <Document 
-                        file={privacy_policy}
+                        file={PrivacyPolicyDocument}
                         onLoadSuccess={this.onDocumentLoadSuccess} 
                         onLoadError={this.onDocumentLoadError}>
                         <Page
