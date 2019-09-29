@@ -6,6 +6,7 @@ import AboutUs from "../components/landing_page/about_us"
 import Events from "../components/landing_page/events"
 import Team from '../components/landing_page/team'
 import Subscribe from '../components/landing_page/subscribe'
+import Footnote from '../components/landing_page/footnote'
 
 
 class LandingPage extends React.Component {
@@ -18,6 +19,7 @@ class LandingPage extends React.Component {
                 <Events />
                 <Team />
                 <Subscribe />
+                <Footnote />
             </div>
         );
     }

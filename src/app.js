@@ -10,7 +10,9 @@ import MembershipPage from './components/membership_page';
 import MembershipPayment from './components/membership_payment';
 import DonatePage from './components/donation_page';
 import ProcessDonationPage from './components/process_donation_page';
-import ContactPage from './components/contact_page'
+import ContactPage from './components/contact_page';
+import PrivacyPage from './components/privacy_policy_page';
+import TermOfUsePage from './components/term_of_use_page';
 import { history } from './helpers/history';
 import { alertActions } from './actions/alert_action';
 import { PrivateRoute } from './components/private_route';
@@ -42,6 +44,8 @@ class App extends React.Component {
               <Route exact path='/donate' component={DonatePage} />
               <Route exact path='/process-donate' component = {ProcessDonationPage} />
               <Route exact path='/contact' component = {ContactPage} />
+              <Route exact path='/privacy-policy' component = {PrivacyPage} />
+              <Route exact path='/term-of-use' component = {TermOfUsePage} />
               </Switch>
             </Router>
           </div>
