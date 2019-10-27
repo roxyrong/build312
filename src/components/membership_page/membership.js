@@ -10,15 +10,15 @@ class Membership extends React.Component {
     render() {
         return (
             <div>
-                <div className="col-md-8" style={styles.membershipHeader}>
-                    <div className="container" style={styles.bgContainer}>
+                <div class="col-md-8 mt-3 mt-md-5 pt-5">
+                    <div class="container mt-md-5 ml-md-5">
                         <h2 style={styles.header}>Membership</h2>
                         <p style={styles.headerDesc}><span style={styles.priceHeader}>$49.99</span> for $200+ value of unlimited </p>
                         <p style={styles.headerDesc}>access to panel discussion and more</p>
-                        <a href="/membership/payment"><button className="btn btn-lg btn-primary" style={styles.headerBtn}>Get Started</button></a>
+                        <a href="/membership/payment"><button class="btn btn-lg btn-primary" style={styles.headerBtn}>Get Started</button></a>
                     </div>
                 </div>
-                <div className="m-0 p-0">
+                <div class="m-0 p-0">
                     <MediaQuery query='(max-width: 768px)'>
                         <img src={mobile_bg} alt="membership bg" style={styles.mobile_bg}/>
                     </MediaQuery>
@@ -26,7 +26,7 @@ class Membership extends React.Component {
                         <img src={bg} alt="membership bg" style={styles.bg}/>
                     </MediaQuery>
                 </div>
-                <div className="d-flex mt-0 mb-4 p-0 flex-column align-items-center">
+                <div class="d-flex mt-0 mb-5 px-2 flex-column align-items-center text-center">
                     <h2 style={styles.benefitHeader}>Benefits</h2>
                     <h4 style={styles.benefitSubHeader}>Events</h4>
                     <p style={styles.benefitItem}>Complimentary access to Build312 monthly panel discussion for you and your guest</p>

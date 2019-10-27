@@ -1,6 +1,5 @@
 import React from "react";
 import * as appStyles from "../styles/app_styles";
-import NavBar from "./navbar"
 
 
 class DashboardPage extends React.Component {

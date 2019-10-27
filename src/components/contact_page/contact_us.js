@@ -1,7 +1,9 @@
 import React from "react";
 import axios from "axios";
+import MediaQuery from 'react-responsive';
 import * as styles from '../../styles/contactus_styles';
 import bg from '../../assets/contact_us_bg.png';
+import mobile_bg from '../../assets/contact_us_mobile.png';
 
 class ContactUs extends React.Component {
     constructor() {
@@ -49,10 +51,10 @@ class ContactUs extends React.Component {
     render() {
         return (
             <div>
-                <div class="container d-flex justify-content-end" style={styles.contactForm}>
+                <div class="container mt-3 mt-md-5 pt-5 d-flex justify-content-end">
                     <div class="row justify-content-end">
-                        <div class="col-xs-12 col-md-9 mr-5">
-                            <div class="mb-5">
+                        <div class="col-12 col-md-8 mr-5">
+                            <div class="mt-md-5 mb-5">
                                 <h3>Contact Us</h3>
                             </div>
                             <form onSubmit={this.handleSubmit}>
@@ -70,8 +72,8 @@ class ContactUs extends React.Component {
                                 <div>{this.state.messageSent}</div>
                             </form>
                         </div>
-                        <div class="col-xs-12 col-md-3">
-                            <div class="mb-5">
+                        <div class="col-12 col-md-3">
+                            <div class="mt-5 mb-5">
                                 <h3>Follow Us</h3>
                             </div>
                             <div class="container">
@@ -103,7 +105,12 @@ class ContactUs extends React.Component {
                         </div>
                     </div>
                 </div>
-                <img src={bg} alt='donate_bg' style={styles.bg}/>
+                <MediaQuery query='(min-width: 769px)'>
+                    <img src={bg} alt='contact us bg' style={styles.bg}/>
+                </MediaQuery>
+                <MediaQuery query='(max-width: 768px)'>
+                    <img src={mobile_bg} alt="contact us mobile bg" style={styles.mobile_bg}/>
+                </MediaQuery>
             </div>
         )
     }

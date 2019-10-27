@@ -1,7 +1,3 @@
-export const eventContainer = {
-    marginTop: "125px"
-}
-
 export const cardDeck = {
     marginTop: "50px"
 }

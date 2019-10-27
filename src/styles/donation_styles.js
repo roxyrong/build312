@@ -4,11 +4,7 @@ export const bg = {
     zIndex: "-1",
     position: "relative",
     minHeight: "650px",
-    marginTop: "-535px"
-}
-
-export const container = {
-    marginTop: "175px"
+    marginTop: "-500px"
 }
 
 export const donationCard = {

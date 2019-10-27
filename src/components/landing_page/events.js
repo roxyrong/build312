@@ -6,9 +6,6 @@ import { bindActionCreators } from 'redux';
 
 
 class Events extends React.Component {
-    constructor() {
-        super();
-    }
 
     componentWillMount() {
         this.props.getEventbriteData();
@@ -45,7 +42,7 @@ class Events extends React.Component {
                     </form>
                 </div>
                 <div className="col-md-4" style={styles.eventLeft}>
-                    <h4 className="text-center" style={styles.eventTitle}>{firstEvent.name}</h4>
+                    <h4 className="text-center px-4" style={styles.eventTitle}>{firstEvent.name}</h4>
                     <p style={styles.eventHeader}>Time</p>
                     <p style={styles.eventContent}>{firstEvent.time}</p>
                     <p style={styles.eventHeader}>Location</p>
@@ -57,7 +54,7 @@ class Events extends React.Component {
                 </div>
 
                 <div className="col-md-4" style={styles.eventRight}>
-                    <h4 className="text-center" style={styles.eventTitle}>{secondEvent.name}</h4>
+                    <h4 className="text-center px-4" style={styles.eventTitle}>{secondEvent.name}</h4>
                     <p style={styles.eventHeader}>Time</p>
                     <p style={styles.eventContent}>{secondEvent.time}</p>
                     <p style={styles.eventHeader}>Location</p>

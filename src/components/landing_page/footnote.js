@@ -2,11 +2,6 @@ import React from "react";
 import * as styles from "../../styles/privacy_styles";
 
 class Footnote extends React.Component {
-    constructor(props) {
-        super(props);
-
-    }
-
     render() {
         return (
             <div>

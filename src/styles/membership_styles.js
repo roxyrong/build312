@@ -1,7 +1,3 @@
-export const membershipHeader = {
-    marginTop: "150px"
-}
-
 export const bg = {
     marginTop: "-600px",
     width: "100%",
@@ -14,10 +10,6 @@ export const mobile_bg = {
     marginTop: "-600px",
     width: "100%",
     minHeight: "600px"
-}
-
-export const bgContainer = {
-    marginLeft: "10%"
 }
 
 export const header = {

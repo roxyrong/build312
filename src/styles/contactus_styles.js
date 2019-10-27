@@ -2,12 +2,14 @@ export const bg = {
     width: "100%",
     zIndex: "-1",
     position: "relative",
-    minHeight: "650px",
+    minHeight: "750px",
     marginTop: "-625px"
 }
 
-export const contactForm = {
-    marginTop: "175px"
+export const mobile_bg = {
+    marginTop: "-1000px",
+    width: "100%",
+    minHeight: "1000px"
 }
 
 export const submitBtn = {

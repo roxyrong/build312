@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from '../membership_page/checkout_form';
-import * as styles from '../../styles/donation_styles';
 import donationPic from '../../assets/thank_you_donation.PNG';
 const queryString = require('query-string');
 
@@ -12,8 +11,7 @@ class ProcessDonation extends React.Component {
         super();
         this.state = {
             publicKey: null,
-            amount: undefined,
-            type: "once"
+            amount: undefined
         }
     }
 
@@ -24,11 +22,6 @@ class ProcessDonation extends React.Component {
         } else {
             this.setState({amount: parsed.others})
         }
-        if ('once' in parsed) {
-            this.setState({type: "once"});
-        } else {
-            this.setState({type: "monthly"});
-        };
         axios.get('/stripe-public-key').then(
             res => {
                 this.setState({publicKey: res.data})
@@ -39,7 +32,7 @@ class ProcessDonation extends React.Component {
         const checkoutInfo = (
         <div class="mb-4">
             <h4 class="mb-3">Your donation information </h4>
-            <p class="mb-3">Thank you for your ${this.state.amount} donation! You will be charged {this.state.type}. </p> 
+            <p class="mb-3">Thank you for your ${this.state.amount} donation!</p> 
         </div>
         )
         const paymentComplete = (
@@ -49,7 +42,7 @@ class ProcessDonation extends React.Component {
                 </div>
                 <div class="card-body">
                     <div class="mt-3 mb-5">
-                        <img src={donationPic} />
+                        <img alt="donation_pic" src={donationPic} />
                     </div>
                     <div class="mb-3">
                         <h5 class="card-title">You've donated ${this.state.amount} to Build312. Thank you!</h5>
@@ -59,7 +52,7 @@ class ProcessDonation extends React.Component {
         )
         if ((this.state.publicKey !== null) && (this.state.amount !== undefined)) {
             return (
-                <div class="container" style={styles.container}>
+                <div class="container mt-3 mt-md-5 pt-5">
                     <div class="row">
                         <div class="col-md-8 px-md-5">
                             <StripeProvider apiKey={this.state.publicKey}>
@@ -72,7 +65,7 @@ class ProcessDonation extends React.Component {
                             <h4 class="mb-3">Questions</h4>
                             <div id="accordion">
                                 <div class="card">
-                                    <div class="card-header" id="headingOne">
+                                    <div class="card-header text-center" id="headingOne">
                                         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                         Is this donation tax deductible?
                                         </button>
@@ -84,7 +77,7 @@ class ProcessDonation extends React.Component {
                                     </div>
                                 </div>
                                 <div class="card">
-                                    <div class="card-header" id="headingTwo">
+                                    <div class="card-header text-center" id="headingTwo">
                                         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                                         Do we accept other payment of methods?
                                         </button>

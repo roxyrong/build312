@@ -65,11 +65,6 @@ export const blackLogo = {
     width: "90%",
 }
 
-export const introVideo = {
-    marginTop: "100px",
-    marginBottom: "100px"
-}
-
 export const eventLeft = {
     "backgroundColor": "white",
     "height": "600px",
@@ -145,10 +140,6 @@ export const eventButtonMiddle = {
 export const teamPic = {
     width: "100%",
     padding: "5% 20% 0 20%",
-}
-
-export const teamHeader = {
-    marginTop: "100px",
 }
 
 export const teamText = {

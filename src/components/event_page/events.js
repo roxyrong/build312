@@ -43,19 +43,19 @@ class Events extends React.Component {
                 };
                 return
             });
-            if (upcomingEvents.length == 0) {
+            if (upcomingEvents.length === 0) {
                 upcomingEventsTitle = "";
             } else {
                 upcomingEventsTitle =  <h3>Upcoming Events</h3>;
             };
         } 
         return (
-            <div class="container" style={styles.eventContainer} >
-                {upcomingEventsTitle}
+            <div class="container mt-3 mt-md-5 pt-3">
+                <div>{upcomingEventsTitle}</div>
                 <div class="card-deck" style={styles.cardDeck}>
                     {upcomingEvents}
                 </div>
-                <h3>Past Events</h3>
+                <div><h3>Past Events</h3></div>
                 <div class="card-deck" style={styles.cardDeck}>
                     {pastEvents}
                 </div>

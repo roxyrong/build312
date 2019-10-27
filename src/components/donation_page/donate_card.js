@@ -41,7 +41,7 @@ class DonateCard extends React.Component {
 
     render() {
         return (
-            <div class="card" style={styles.donationCard}>
+            <div class="card mt-3" style={styles.donationCard}>
             <div class="card-body" style={styles.donationCardBody}>
                 <form class="needs-validation" novalidate="">
                     <h5 class='mt-3 mb-4'>Choose amount to give</h5>
