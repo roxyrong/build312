@@ -50,24 +50,57 @@ class ContactUs extends React.Component {
         return (
             <div>
                 <div class="container d-flex justify-content-end" style={styles.contactForm}>
-                    <div class="col-md-6 mr-5">
-                        <div class="mb-5">
-                            <h3>Contact Us</h3>
-                        </div>
-                        <form onSubmit={this.handleSubmit}>
-                            <div class="row">
-                                <div class="col-md-6 mx-0 mb-3 px-3">
-                                    <input type="text" class="form-control border-0" name="name" placeholder="Name" onChange={this.handleChange} required=""/>
+                    <div class="row justify-content-end">
+                        <div class="col-xs-12 col-md-9 mr-5">
+                            <div class="mb-5">
+                                <h3>Contact Us</h3>
+                            </div>
+                            <form onSubmit={this.handleSubmit}>
+                                <div class="row">
+                                    <div class="col-md-6 mx-0 mb-3 px-3">
+                                        <input type="text" class="form-control border-0" name="name" placeholder="Name" onChange={this.handleChange} required=""/>
+                                    </div>
+                                    <div class="col-md-6 mx-0 mb-3 px-3">
+                                        <input type="email" class= "form-control border-0" name="email" placeholder="Email" onChange={this.handleChange} required=""/>
+                                    </div>
                                 </div>
-                                <div class="col-md-6 mx-0 mb-3 px-3">
-                                    <input type="email" class= "form-control border-0" name="email" placeholder="Email" onChange={this.handleChange} required=""/>
+                            <input type="text" class="form-control mb-3 border-0" name="subject" placeholder="Subject" onChange={this.handleChange} required=""/>
+                            <textarea type="text" rows="6" class="form-control mb-4 border-0" name="message" placeholder="Message" onChange={this.handleChange} required=""/>
+                                <button type="submit" class="btn btn-lg btn-primary" style={styles.submitBtn}>Submit</button>
+                                <div>{this.state.messageSent}</div>
+                            </form>
+                        </div>
+                        <div class="col-xs-12 col-md-3">
+                            <div class="mb-5">
+                                <h3>Follow Us</h3>
+                            </div>
+                            <div class="container">
+                                <div class="mb-1 row">
+                                    <i class="fab fa-lg fa-facebook-square"></i> 
+                                    <div class="px-2">
+                                        <h6>
+                                            <a style={styles.linkStyle} href="https://www.facebook.com/Build312/">Facebook</a>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="mb-1 row">
+                                    <i class="fab fa-lg fa-meetup"></i> 
+                                    <div class="px-2">
+                                        <h6>
+                                            <a style={styles.linkStyle} href="https://www.meetup.com/Chicago-Entrepreneur-Sharing-Platform-Build312/">Meetup</a>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <div class="mb-1 row">
+                                    <i class="far fa-lg fa-envelope"></i>
+                                    <div class="px-2">
+                                        <h6>
+                                            <a  style={styles.linkStyle}href="mailto:info@build312.co">Email</a>
+                                        </h6>
+                                    </div>
                                 </div>
                             </div>
-                           <input type="text" class="form-control mb-3 border-0" name="subject" placeholder="Subject" onChange={this.handleChange} required=""/>
-                           <textarea type="text" rows="6" class="form-control mb-4 border-0" name="message" placeholder="Message" onChange={this.handleChange} required=""/>
-                            <button type="submit" class="btn btn-lg btn-primary" style={styles.submitBtn}>Submit</button>
-                            <div>{this.state.messageSent}</div>
-                        </form>
+                        </div>
                     </div>
                 </div>
                 <img src={bg} alt='donate_bg' style={styles.bg}/>

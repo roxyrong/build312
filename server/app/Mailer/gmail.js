@@ -22,7 +22,7 @@ const send = ({ email, name, subject, text }) => {
   const from = name && email ? `${name} <${email}>` : `${name || email}`
   const content = text + '\nfrom: ' + name + '(' + email + ')'; 
   const message = {
-    from: from,
+    from: client,
     to: client,
     subject: subject,
     text: content,

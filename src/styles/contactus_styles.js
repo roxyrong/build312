@@ -17,3 +17,8 @@ export const submitBtn = {
     letterSpacing: "1px",
     marginBottom: "25px"
 }
+
+export const linkStyle = {
+    color: "#1DCB8B",
+    textDecoration: "none"
+}
