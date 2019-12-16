@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import reducers from './reducers';
 import App from './app';
 import * as serviceWorker from './serviceWorker';
+import HttpsRedirect from 'react-https-redirect';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const loggerMiddleware = createLogger();
@@ -15,11 +16,14 @@ const store = createStore(reducers, applyMiddleware(thunk));
 // const store = createStore(reducers, applyMiddleware(thunk, loggerMiddleware));
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </BrowserRouter>, 
+  <HttpsRedirect>
+      <BrowserRouter>
+        <Provider store={store}>
+          <App />
+        </Provider>
+    </BrowserRouter>
+  </HttpsRedirect>
+, 
   document.getElementById("root")
 );
 
