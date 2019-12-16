@@ -57,7 +57,7 @@ class ProcessDonation extends React.Component {
                         <div class="col-md-8 px-md-5">
                             <StripeProvider apiKey={this.state.publicKey}>
                                 <Elements>
-                                    <CheckoutForm amount={this.state.amount} checkoutInfo={checkoutInfo} paymentComplete={paymentComplete}/>
+                                    <CheckoutForm amount={this.state.amount} description='Donation' checkoutInfo={checkoutInfo} paymentComplete={paymentComplete}/>
                                 </Elements>
                             </StripeProvider>
                         </div>

@@ -48,7 +48,7 @@ class Checkout extends React.Component {
                         <div class="col-md-8 px-md-5 order-md-1">
                         <StripeProvider apiKey={this.state.publicKey}>
                             <Elements>
-                                <CheckoutForm amount={49.99} paymentComplete={paymentComplete}/>
+                                <CheckoutForm amount={49.99} description='Membership' paymentComplete={paymentComplete}/>
                             </Elements>
                         </StripeProvider>
                         </div>
