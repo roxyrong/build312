@@ -119,11 +119,13 @@ app.post("/charge", async (req, res) => {
     console.log(req.body);
     const amount = parseInt(req.body.amount, 10) * 100;
     const description = req.body.description;
+    const receipt_email = req.body.receipt_email;
     const token = req.body.token.token.id;
     let {status} = await stripe.charges.create({
       amount: amount,
       currency: "usd",
       description: description,
+      receipt_email: receipt_email,
       source: token
     });
     console.log(res.json({status}));
