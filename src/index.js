@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
+import HttpsRedirect from 'react-https-redirect';
 import reducers from './reducers';
 import App from './app';
 import * as serviceWorker from './serviceWorker';
@@ -15,11 +16,14 @@ const store = createStore(reducers, applyMiddleware(thunk));
 // const store = createStore(reducers, applyMiddleware(thunk, loggerMiddleware));
 
 ReactDOM.render(
+<HttpsRedirect>
   <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </BrowserRouter>, 
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+</HttpsRedirect>
+, 
   document.getElementById("root")
 );
 
