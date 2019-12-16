@@ -19,16 +19,23 @@ class CheckoutForm extends Component {
     this.checkoutInfo = <div></div>
     this.paymentComplete = <h1>Purchase Complete</h1>;
     this.state = {
-        complete: false
+        complete: false,
+        firstName: '',
+        lastName: '',
+        email: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setEmail = this.setEmail.bind(this);
+    this.setFirstName = this.setFirstName.bind(this);
+    this.setLastName = this.setLastName.bind(this);
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.stripe.createToken({name: "Name"})
+    const name = this.state.firstName + ' ' + this.state.lastName;
+    this.props.stripe.createToken({name: name})
     .then(token => {
-        const stripeData = {token: token, amount: this.props.amount, description: this.props.description};
+        const stripeData = {token: token, amount: this.props.amount, description: this.props.description, receipt_email: this.state.email};
         fetch("/charge", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -42,6 +49,20 @@ class CheckoutForm extends Component {
     })
   }
 
+setEmail(event) {
+    const email = event.target.value;
+    this.setState({email: email});
+}
+
+setFirstName(event) {
+    const firstName = event.target.value;
+    this.setState({firstName: firstName});
+}
+setLastName(event) {
+    const lastName = event.target.value;
+    this.setState({lastName: lastName});
+}
+
   render() {
     if (this.state.complete) return (this.props.paymentComplete);
     return (
@@ -52,14 +73,14 @@ class CheckoutForm extends Component {
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="firstName">First name</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" required=""/>
+                    <input type="text" class="form-control" id="firstName" placeholder="" required="" onChange={this.setFirstName}/>
                     <div class="invalid-feedback">
                     Valid first name is required.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lastName">Last name</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="" required=""/>
+                    <input type="text" class="form-control" id="lastName" placeholder="" required="" onChange={this.setLastName}/>
                     <div class="invalid-feedback">
                     Valid last name is required.
                     </div>
@@ -67,7 +88,7 @@ class CheckoutForm extends Component {
             </div>
             <div class="mb-3">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder=""/>
+                <input type="email" class="form-control" id="email" placeholder="" onChange={this.setEmail}/>
                 <div class="invalid-feedback">
                     Please enter a valid email address for shipping updates.
                 </div>
